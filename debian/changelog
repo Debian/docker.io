@@ -1,4 +1,4 @@
-docker.io (0.6.6-1) unstable; urgency=low
+docker.io (0.6.6+dfsg1-1) unstable; urgency=low
 
   * Initial release (Closes: #706060)
 

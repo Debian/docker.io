@@ -1,0 +1,10 @@
+--- a/utils/tarsum.go   2013-11-29 16:03:59.955823794 -0500
++++ b/utils/tarsum.go   2013-11-29 16:03:55.247835466 -0500
+@@ -5,6 +5,7 @@ import (
+    "compress/gzip"
+    "crypto/sha256"
+    "encoding/hex"
++   "github.com/dotcloud/tar"
+    "hash"
+    "io"
+    "sort"

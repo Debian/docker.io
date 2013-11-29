@@ -1,0 +1,3 @@
+version=3
+opts=dversionmangle=s/\+(debian|dfsg|ds|deb)\d*$//,filenamemangle=s/.+\/v(\d\S*)\.tar\.gz/docker.io_$1.orig.tar.gz/ \
+  https://github.com/dotcloud/docker/tags .*/v(\d\S*)\.tar\.gz debian /bin/sh debian/repack.sh

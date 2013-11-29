@@ -1,0 +1,24 @@
+Description: Allow running on non-amd64 architectures
+ Upstream prevents running docker in non-amd64 architechtures.
+ This patch makes docker just to warn in case is run in non-amd64,
+ enabling it to be tested on those architectures.
+Author: Daniel Mizyrycki <daniel@dotcloud.com>
+Last-Update: 2013-08-03
+
+---
+ server.go |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: lxc-docker-0.5.3+ds1/server.go
+===================================================================
+--- lxc-docker-0.5.3+ds1.orig/server.go	2013-09-24 22:11:22.234305927 -0400
++++ lxc-docker-0.5.3+ds1/server.go	2013-09-24 22:11:22.230305927 -0400
+@@ -1219,7 +1219,7 @@
+ 
+ func NewServer(flGraphPath string, autoRestart, enableCors bool, dns ListOpts) (*Server, error) {
+ 	if runtime.GOARCH != "amd64" {
+-		log.Fatalf("The docker runtime currently only supports amd64 (not %s). This will change in the future. Aborting.", runtime.GOARCH)
++		log.Printf("WARNING: The docker runtime has only experimental support for your %s architecture. DO NOT use it in production.", runtime.GOARCH)
+ 	}
+ 	runtime, err := NewRuntime(flGraphPath, autoRestart, dns)
+ 	if err != nil {

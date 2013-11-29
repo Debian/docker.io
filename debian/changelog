@@ -1,0 +1,5 @@
+docker.io (0.6.6-1) unstable; urgency=low
+
+  * Initial release (Closes: #706060)
+
+ -- Daniel Mizyrycki <daniel@dotcloud.com>  Sat, 14 Sep 2013 09:39:03 -0700

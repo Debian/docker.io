@@ -1,0 +1,29 @@
+Docker on Debian
+================
+
+To enable docker memory limitation, the kernel needs to be loaded with
+boot parameters: cgroup_enable=memory swapaccount=1.
+This is because enabling memory cgroup support has some run-time overhead,
+and kernel maintainers don't want to slow down systems unnecessarily.
+http://www.mail-archive.com/debian-bugs-dist@lists.debian.org/msg764104.html
+https://github.com/dotcloud/docker/issues/396
+To instruct the kernel to enable memory cgroup support, edit
+/etc/default/grub and extend GRUB_CMDLINE_LINUX_DEFAULT like:
+GRUB_CMDLINE_LINUX_DEFAULT="cgroup_enable=memory swapaccount=1", then
+run update-grub, and reboot.
+This debian package includes experimental support for architectures
+different from amd64.
+
+
+To create the original tarball, please just run::
+
+  $ uscan --force-download --verbose --download-version 0.5.3
+
+Where 0.5.3 is the Version you want.
+
+If you're interested in what is removed; please see debian/prune.
+
+
+The full files for the documentation is in the source, if you want to rebuild
+the docs given upstream's documentaiton from the repo. This is intentional. Just
+grab the source tarball without repacking, and add the control paragraph.

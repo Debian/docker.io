@@ -1,0 +1,31 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Tell dh-golang where this package lives upstream
+export DH_GOPKG := github.com/dotcloud/docker
+# Set temporary build paths
+GO_PATH = $(CURDIR)/obj-`arch`-linux-gnu
+DOCKER_PATH = obj-`arch`-linux-gnu/src/github.com/dotcloud/docker/docker
+
+
+override_dh_auto_build:
+	cd ${DOCKER_PATH}; GOPATH=${GO_PATH} CGO_ENABLED=0 go build -v -a
+
+
+override_dh_auto_install:
+	dh_auto_install
+	mkdir -p debian/lxc-docker/usr/bin
+	mv ${DOCKER_PATH}/docker debian/lxc-docker/usr/bin/lxc-docker
+	# The source of docker does not make a library, so dont ship it.
+	rm -rf debian/lxc-docker/usr/share/gocode
+
+
+override_dh_auto_test: 
+
+
+override_dh_installchangelogs:
+	dh_installchangelogs CHANGELOG.md
+
+
+%:
+	dh $@ --buildsystem=golang --with=golang,systemd

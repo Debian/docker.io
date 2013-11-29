@@ -1,10 +1,25 @@
---- a/utils/tarsum.go   2013-11-29 16:03:59.955823794 -0500
-+++ b/utils/tarsum.go   2013-11-29 16:03:55.247835466 -0500
-@@ -5,6 +5,7 @@ import (
-    "compress/gzip"
-    "crypto/sha256"
-    "encoding/hex"
-+   "github.com/dotcloud/tar"
-    "hash"
-    "io"
-    "sort"
+From b3bee7e0c43dd281c081cd59d7403148d3f8af88 Mon Sep 17 00:00:00 2001
+From: Johan Euphrosine <proppy@google.com>
+Date: Wed, 20 Nov 2013 18:45:12 +0000
+Subject: [PATCH] utils: remove dotcloud/tar dep
+
+---
+ utils/tarsum.go                                                  | 2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/utils/tarsum.go b/utils/tarsum.go
+index 290be24..9cba516 100644
+--- a/utils/tarsum.go
++++ b/utils/tarsum.go
+@@ -5,7 +5,7 @@ import (
+ 	"compress/gzip"
+ 	"crypto/sha256"
+ 	"encoding/hex"
+-	"github.com/dotcloud/tar"
++	"archive/tar"
+ 	"hash"
+ 	"io"
+ 	"sort"
+-- 
+1.8.4
+

@@ -13,7 +13,7 @@ fi
 
 version="$2"
 filename="$3"
-source="lxc-docker"
+source="docker.io"
 
 
 if [ -z "$version" ] || ! [ -f "$filename" ]; then

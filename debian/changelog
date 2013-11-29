@@ -1,5 +1,5 @@
 docker.io (0.6.5+dfsg1-1) unstable; urgency=low
 
-  * Initial release (Closes: #706060)
+  * Initial release (Closes: #706060, #730569)
 
  -- Daniel Mizyrycki <daniel@dotcloud.com>  Sat, 14 Sep 2013 09:39:03 -0700

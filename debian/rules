@@ -9,7 +9,7 @@ DOCKER_PATH = obj-`arch`-linux-gnu/src/github.com/dotcloud/docker/docker
 
 
 override_dh_auto_build:
-	cd ${DOCKER_PATH}; GOPATH=${GO_PATH} CGO_ENABLED=0 go build -v -a
+	cd ${DOCKER_PATH} && GOPATH=${GO_PATH} CGO_ENABLED=0 go build -v -a
 
 
 override_dh_auto_install:
@@ -20,7 +20,7 @@ override_dh_auto_install:
 	rm -rf debian/docker.io/usr/share/gocode
 
 
-override_dh_auto_test: 
+override_dh_auto_test:
 
 
 override_dh_installchangelogs:

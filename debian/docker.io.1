@@ -5,14 +5,14 @@
 \\$2 \(la\\$1\(ra\\$3
 ..
 .if \n(.g .mso www.tmac
-.TH lxc-docker 1 "Sat Jul 27 11:46:22 UTC 2013" "" ""
+.TH docker.io 1 "Sat Jul 27 11:46:22 UTC 2013" "" ""
 .SH NAME
-lxc-docker \- A self-sufficient runtime for linux containers.
+docker.io \- A self-sufficient runtime for linux containers.
 .SH SYNOPSIS
 'nh
 .fi
 .ad l
-\fBlxc-docker\fR [OPTIONS] COMMAND [arg...]\kx
+\fBdocker.io\fR [OPTIONS] COMMAND [arg...]\kx
 .if (\nx>(\n(.l/2)) .nr x (\n(.l/5)
 'in \n(.iu+\nxu
 'in \n(.iu-\nxu
@@ -26,29 +26,29 @@ Docker is a great building block for automating distributed systems:
 large-scale web deployments, database clusters, continuous deployment systems,
 private PaaS, service-oriented architectures, etc.
 .P
-\fBlxc-docker\fR runs in three ways:
+\fBdocker.io\fR runs in three ways:
 .TP
 \fB*\fR as a daemon to manage LXC containers on your Linux host
-sudo lxc-docker -d
+sudo docker.io -d
 .TP
 \fB*\fR as a CLI which talks to the daemon’s REST API
-lxc-docker run ...
+docker.io run ...
 .TP
 \fB*\fR as a client of Repositories that let you share what you’ve built
-lxc-docker pull, lxc-docker commit
+docker.io pull, docker.io commit
 .SH EXAMPLES
 .TP 
-lxc-docker
+docker.io
 list COMMANDS available
 .TP
-lxc-docker --help
+docker.io --help
 list OPTIONS available
 .TP
-lxc-docker run busybox echo 'Hello world'
+docker.io run busybox echo 'Hello world'
 Pull busybox image, launch a container with it, execute echo inside, and greet
 .SH "SEE ALSO"
-The full lxc-docker documentation is at http://docs.docker.io
+The full docker.io documentation is at http://docs.docker.io
 .br
-In Debian, documentation is available on /usr/share/doc/lxc-docker/README.md.gz
+In Debian, documentation is available on /usr/share/doc/docker.io/README.md.gz
 .SH AUTHOR
 Daniel Mizyrycki <\*(T<daniel@dotcloud.com\*(T>>

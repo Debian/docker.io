@@ -13,8 +13,6 @@ fi
 
 version="$2"
 filename="$3"
-source="docker.io"
-
 
 if [ -z "$version" ] || ! [ -f "$filename" ]; then
 	exit 1

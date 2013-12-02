@@ -9,6 +9,8 @@ DOCKER_PATH = obj-`arch`-linux-gnu/src/github.com/dotcloud/docker/docker
 
 
 override_dh_auto_build:
+	# TODO replace this with a proper golang sqlite3 dev package
+	GOPATH=${GO_PATH} go get -d code.google.com/p/gosqlite/sqlite3
 	cd ${DOCKER_PATH} && GOPATH=${GO_PATH} CGO_ENABLED=0 go build -v -a
 
 

@@ -6,18 +6,24 @@ export DH_GOPKG := github.com/dotcloud/docker
 # Set temporary build paths
 GO_PATH = $(CURDIR)/obj-`arch`-linux-gnu
 DOCKER_PATH = obj-`arch`-linux-gnu/src/github.com/dotcloud/docker/docker
+DOCKER_VERSION = $(shell cat VERSION)
+# TODO figure out a better place to store this exact hash (in the changelog somehow?)
+GITCOMMIT = 0d078b65
 
 
 override_dh_auto_build:
 	# TODO replace this with a proper golang sqlite3 dev package
 	GOPATH=${GO_PATH} go get -d code.google.com/p/gosqlite/sqlite3
-	cd ${DOCKER_PATH} && GOPATH=${GO_PATH} CGO_ENABLED=0 go build -v -a
+	GOPATH=${GO_PATH} DOCKER_GITCOMMIT=${GITCOMMIT} ./hack/make.sh dynbinary
 
 
 override_dh_auto_install:
 	dh_auto_install
 	mkdir -p debian/docker.io/usr/bin
-	mv ${DOCKER_PATH}/docker debian/docker.io/usr/bin/docker.io
+	mv bundles/${DOCKER_VERSION}/dynbinary/docker-${DOCKER_VERSION} debian/docker.io/usr/bin/docker.io
+	# TODO replace this with usr/lib/docker.io (see https://github.com/dotcloud/docker/pull/2924)
+	mkdir -p debian/docker.io/usr/libexec/docker
+	mv bundles/${DOCKER_VERSION}/dynbinary/dockerinit-${DOCKER_VERSION} debian/docker.io/usr/libexec/dockerinit
 	# The source of docker does not make a library, so dont ship it.
 	rm -rf debian/docker.io/usr/share/gocode
 

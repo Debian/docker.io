@@ -1,0 +1,40 @@
+From efd0e13ca7e11e6422faf63986f443fe0df0cece Mon Sep 17 00:00:00 2001
+From: Tianon Gravi <admwiggin@gmail.com>
+Date: Thu, 21 Nov 2013 15:11:17 -0700
+Subject: [PATCH] Add support for compiling using make.sh without '.git' (ie,
+ from a Github tarball, for example)
+
+---
+ hack/make.sh | 16 +++++++++++++---
+ 1 file changed, 13 insertions(+), 3 deletions(-)
+
+diff --git a/hack/make.sh b/hack/make.sh
+index 7e81417..7407ce8 100755
+--- a/hack/make.sh
++++ b/hack/make.sh
+@@ -41,9 +41,19 @@ DEFAULT_BUNDLES=(
+ )
+ 
+ VERSION=$(cat ./VERSION)
+-GITCOMMIT=$(git rev-parse --short HEAD)
+-if [ -n "$(git status --porcelain)" ]; then
+-	GITCOMMIT="$GITCOMMIT-dirty"
++if [ -d .git ] && command -v git &> /dev/null; then
++	GITCOMMIT=$(git rev-parse --short HEAD)
++	if [ -n "$(git status --porcelain)" ]; then
++		GITCOMMIT="$GITCOMMIT-dirty"
++	fi
++elif [ "$DOCKER_GITCOMMIT" ]; then
++	GITCOMMIT="$DOCKER_GITCOMMIT"
++else
++	echo >&2 'error: .git directory missing and DOCKER_GITCOMMIT not specified'
++	echo >&2 '  Please either build with the .git directory accessible, or specify the'
++	echo >&2 '  exact (--short) commit hash you are building using DOCKER_GITCOMMIT for'
++	echo >&2 '  future accountability in diagnosing build issues.  Thanks!'
++	exit 1
+ fi
+ 
+ # Use these flags when compiling the tests and final binary
+-- 
+1.8.4
+

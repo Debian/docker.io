@@ -25,9 +25,10 @@ cd "$tempdir"
 tar xf "$dir/$filename"
 cat "$dir"/debian/prune/* | while read file; do rm -rvf */$file; done
 
-tar -czf ${dir}/${filename} *
+dfsgfilename="$(echo $filename | sed -E 's/(\.orig\.)/+dfsg1\1/')"
+tar -czf ${dir}/${dfsgfilename} *
 cd "$dir"
 rm -rf "$tempdir"
-echo "Done pruning upstream tarball"
+echo "Done pruning upstream tarball into $dfsgfilename"
 
 exit 0

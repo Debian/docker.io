@@ -13,7 +13,7 @@ Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/docker.io.git;a=su
 
 Package: docker.io
 Architecture: linux-any
-Depends: ${misc:Depends}, lxc
+Depends: ${misc:Depends}, ${shlibs:Depends}, lxc
 Built-Using: ${misc:Built-Using}
 Description: Linux container runtime
  Docker complements LXC with a high-level API which operates at the process

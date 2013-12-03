@@ -3,6 +3,9 @@
 
 # Tell dh-golang where this package lives upstream
 export DH_GOPKG := github.com/dotcloud/docker
+# Tell dh-golang that we DO need subpackages
+export DH_GOLANG_INSTALL_ALL := 1
+
 # Set temporary build paths
 GO_PATH = $(CURDIR)/obj-`arch`-linux-gnu
 DOCKER_PATH = obj-`arch`-linux-gnu/src/github.com/dotcloud/docker/docker

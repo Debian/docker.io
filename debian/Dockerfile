@@ -1,7 +1,7 @@
 FROM tianon/debian:sid
 MAINTAINER Tianon Gravi <admwiggin@gmail.com>
 
-RUN apt-get update && apt-get install -yq devscripts git-buildpackage
+RUN apt-get update && apt-get install -yq devscripts equivs libcrypt-ssleay-perl --no-install-recommends
 RUN echo 'deb-src http://http.debian.net/debian sid main' >> /etc/apt/sources.list
 ADD . /usr/src/docker-io/debian
 WORKDIR /usr/src/docker-io
@@ -14,6 +14,6 @@ RUN origtargz --unpack
 RUN echo 'debuild -us -uc' >> /.bash_history
 
 # TODO remove this once golang sqlite3 is properly packaged
-RUN apt-get install -yq libsqlite3-dev mercurial
+RUN apt-get install -yq libsqlite3-dev mercurial --no-install-recommends
 
 CMD [ "debuild", "-us", "-uc" ]

@@ -11,7 +11,7 @@ RUN uscan --force-download --verbose --download-current-version
 RUN origtargz --unpack
 
 # tianon is _really_ lazy, and likes a preseeded bash history
-RUN echo 'debuild -us -uc' >> /.bash_history
+RUN (echo 'uscan --force-download --verbose --download-current-version' && echo 'origtargz --unpack && debuild -us -uc') >> /.bash_history
 
 # TODO remove this once golang sqlite3 is properly packaged
 RUN apt-get install -yq libsqlite3-dev mercurial --no-install-recommends

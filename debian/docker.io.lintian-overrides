@@ -1,6 +1,0 @@
-# Static-linking is a critical feature of docker's core functionality.
-docker.io: statically-linked-binary usr/libexec/docker/dockerinit
-
-# TODO remove /usr/libexec in favor of /usr/lib, and switch from /usr/lib/docker to /usr/lib/docker.io (https://github.com/dotcloud/docker/pull/2924)
-docker.io: non-standard-dir-in-usr usr/libexec/
-docker.io: file-in-unusual-dir usr/libexec/docker/dockerinit

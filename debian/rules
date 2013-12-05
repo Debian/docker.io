@@ -34,6 +34,11 @@ override_dh_auto_install:
 override_dh_auto_test:
 
 
+override_dh_installman:
+	mkdir -p debian/docker.io/usr/share/man/man1
+	cp debian/docker.io.1 debian/docker.io/usr/share/man/man1/
+
+
 override_dh_installchangelogs:
 	dh_installchangelogs CHANGELOG.md
 

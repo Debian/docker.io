@@ -3,8 +3,8 @@ MAINTAINER Tianon Gravi <admwiggin@gmail.com>
 
 RUN apt-get update && apt-get install -yq devscripts equivs libcrypt-ssleay-perl lintian --no-install-recommends
 RUN echo 'deb-src http://http.debian.net/debian sid main' >> /etc/apt/sources.list
-ADD . /usr/src/docker-io/debian
-WORKDIR /usr/src/docker-io
+ADD . /usr/src/docker.io/debian
+WORKDIR /usr/src/docker.io
 RUN apt-get update && mk-build-deps -irt'apt-get --no-install-recommends -yq' debian/control
 
 RUN uscan --force-download --verbose --download-current-version

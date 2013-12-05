@@ -1,0 +1,13 @@
+diff --git a/contrib/init/systemd/docker.service b/contrib/init/systemd/docker.service
+index bdc6522..4b72084 100644
+--- a/contrib/init/systemd/docker.service
++++ b/contrib/init/systemd/docker.service
+@@ -7,7 +7,7 @@ After=multi-user.target
+ [Service]
+ Type=simple
+ ExecStartPre=/bin/mount --make-rprivate /
+-ExecStart=/usr/bin/docker -d
++ExecStart=/usr/bin/docker.io -d
+ 
+ [Install]
+ WantedBy=multi-user.target

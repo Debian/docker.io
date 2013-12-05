@@ -1,3 +1,4 @@
 # docker.io-architectures.patch
 remove-old-dep.patch
 backport-0.7-DOCKER_GITCOMMIT-efd0e13c.patch
+systemd-docker.io.patch

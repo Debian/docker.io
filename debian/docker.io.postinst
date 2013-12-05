@@ -1,0 +1,18 @@
+#!/bin/sh
+set -e
+
+case "$1" in
+	configure)
+		if [ -z "$2" ]; then
+			groupadd --system docker
+		fi
+		;;
+	abort-*)
+		# How'd we get here??
+		exit 1
+		;;
+	*)
+		;;
+esac
+
+#DEBHELPER#

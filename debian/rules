@@ -22,7 +22,7 @@ override_dh_auto_install:
 	dh_auto_install
 	mkdir -p debian/docker.io/usr/bin
 	mv bundles/${DOCKER_VERSION}/dynbinary/docker-${DOCKER_VERSION} debian/docker.io/usr/bin/docker.io
-	# TODO replace this with usr/lib/docker.io (see https://github.com/dotcloud/docker/pull/2924)
+	# TODO replace this with usr/lib/docker.io (see https://github.com/dotcloud/docker/pull/3064)
 	mkdir -p debian/docker.io/usr/libexec/docker
 	mv bundles/${DOCKER_VERSION}/dynbinary/dockerinit-${DOCKER_VERSION} debian/docker.io/usr/libexec/docker/dockerinit
 	# The source of docker does not make a library, so dont ship it.

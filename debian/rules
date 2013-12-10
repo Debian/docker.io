@@ -15,8 +15,6 @@ GITCOMMIT = 0d078b65
 
 
 override_dh_auto_build:
-	# TODO replace this with a proper golang sqlite3 dev package
-	GOPATH=${GO_PATH} go get -d code.google.com/p/gosqlite/sqlite3
 	GOPATH=${GO_PATH} DOCKER_GITCOMMIT=${GITCOMMIT} ./hack/make.sh dynbinary
 
 

@@ -3,9 +3,16 @@ Section: admin
 Priority: optional
 Maintainer: Daniel Mizyrycki <daniel@dotcloud.com>
 Uploaders: Paul Tagliamonte <paultag@debian.org>
-Build-Depends: debhelper (>=9), golang (>= 2:1.1.2-3~),
- dh-golang (>= 1.1), dh-systemd, golang-pty-dev, golang-mux-dev,
- golang-context-dev, golang-go.net-dev, golang-gosqlite-dev, bash-completion
+Build-Depends: bash-completion,
+               debhelper (>=9),
+               dh-golang (>= 1.1),
+               dh-systemd,
+               golang (>= 2:1.1.2-3~),
+               golang-context-dev,
+               golang-go.net-dev,
+               golang-gosqlite-dev,
+               golang-mux-dev,
+               golang-pty-dev
 Standards-Version: 3.9.4
 Homepage: http://github.com/dotcloud/docker
 Vcs-Git: git://anonscm.debian.org/collab-maint/docker.io.git
@@ -13,7 +20,7 @@ Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/docker.io.git;a=su
 
 Package: docker.io
 Architecture: linux-any
-Depends: ${misc:Depends}, ${shlibs:Depends}, lxc
+Depends: lxc, ${misc:Depends}, ${shlibs:Depends}
 Built-Using: ${misc:Built-Using}
 Description: Linux container runtime
  Docker complements LXC with a high-level API which operates at the process

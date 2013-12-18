@@ -1,4 +1,7 @@
 # docker.io-architectures.patch
 remove-old-dep.patch
 backport-0.7-DOCKER_GITCOMMIT-efd0e13c.patch
+
+# a few binary name patches (docker -> docker.io)
 systemd-docker.io.patch
+bash-completion-docker.io.patch

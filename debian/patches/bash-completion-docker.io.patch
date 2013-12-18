@@ -1,0 +1,10 @@
+diff --git a/contrib/completion/bash/docker b/contrib/completion/bash/docker
+index 8e53528..51c1e5e 100755
+--- a/contrib/completion/bash/docker
++++ b/contrib/completion/bash/docker
+@@ -540,4 +540,4 @@ _docker()
+ 	return 0
+ }
+ 
+-complete -F _docker docker
++complete -F _docker docker.io

@@ -10,21 +10,24 @@ export DH_GOLANG_INSTALL_ALL := 1
 GO_PATH = $(CURDIR)/obj-`arch`-linux-gnu
 DOCKER_PATH = obj-`arch`-linux-gnu/src/github.com/dotcloud/docker/docker
 DOCKER_VERSION = $(shell cat VERSION)
+
 # TODO figure out a better place to store this exact hash (in the changelog somehow?)
 GITCOMMIT = 0d078b65
 
+INITDIR = /usr/lib/docker.io
+INITPATH = ${INITDIR}/dockerinit
+
 
 override_dh_auto_build:
-	GOPATH=${GO_PATH} DOCKER_GITCOMMIT=${GITCOMMIT} ./hack/make.sh dynbinary
+	GOPATH=${GO_PATH} DOCKER_GITCOMMIT=${GITCOMMIT} DOCKER_INITPATH=${INITPATH} ./hack/make.sh dynbinary
 
 
 override_dh_auto_install:
 	dh_auto_install
 	mkdir -p debian/docker.io/usr/bin
 	mv bundles/${DOCKER_VERSION}/dynbinary/docker-${DOCKER_VERSION} debian/docker.io/usr/bin/docker.io
-	# TODO replace this with usr/lib/docker.io (see https://github.com/dotcloud/docker/pull/3064)
-	mkdir -p debian/docker.io/usr/libexec/docker
-	mv bundles/${DOCKER_VERSION}/dynbinary/dockerinit-${DOCKER_VERSION} debian/docker.io/usr/libexec/docker/dockerinit
+	mkdir -p debian/docker.io/${INITDIR}
+	mv bundles/${DOCKER_VERSION}/dynbinary/dockerinit-${DOCKER_VERSION} debian/docker.io/${INITPATH}
 	# The source of docker does not make a library, so dont ship it.
 	rm -rf debian/docker.io/usr/share/gocode
 

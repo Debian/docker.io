@@ -1,4 +1,4 @@
-FROM stackbrew/debian:sid
+FROM debian:sid
 MAINTAINER Tianon Gravi <admwiggin@gmail.com>
 
 RUN apt-get update && apt-get install -yq devscripts equivs libcrypt-ssleay-perl lintian --no-install-recommends

@@ -2,4 +2,4 @@ docker.io (0.6.7+dfsg1-1) unstable; urgency=low
 
   * Initial release (Closes: #706060, #730569)
 
- -- Daniel Mizyrycki <daniel@dotcloud.com>  Sat, 14 Sep 2013 09:39:03 -0700
+ -- Paul Tagliamonte <paultag@debian.org>  Tue, 07 Jan 2014 21:06:10 -0500

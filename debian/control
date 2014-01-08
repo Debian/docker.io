@@ -2,7 +2,7 @@ Source: docker.io
 Section: admin
 Priority: optional
 Maintainer: Paul Tagliamonte <paultag@debian.org>
-Uploaders: Daniel Mizyrycki <daniel@dotcloud.com>,
+Uploaders: Daniel Mizyrycki <daniel@docker.com>,
  Tianon Gravi <admwiggin@gmail.com>
 Build-Depends: bash-completion,
                debhelper (>=9),

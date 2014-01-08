@@ -15,7 +15,7 @@ Build-Depends: bash-completion,
                golang-mux-dev,
                golang-pty-dev
 Standards-Version: 3.9.5
-Homepage: http://github.com/dotcloud/docker
+Homepage: https://github.com/dotcloud/docker
 Vcs-Git: git://anonscm.debian.org/collab-maint/docker.io.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/docker.io.git;a=summary
 

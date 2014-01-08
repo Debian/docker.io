@@ -1,12 +1,7 @@
-docker.io (0.6.7+dfsg1-2) unstable; urgency=low
-
-  * Document missing licenses in the source tree. Bad, paultag. Thanks
-    alteholz.
-
- -- Paul Tagliamonte <paultag@debian.org>  Wed, 08 Jan 2014 08:36:07 -0500
-
 docker.io (0.6.7+dfsg1-1) unstable; urgency=medium
 
   * Initial release (Closes: #706060, #730569)
+  * Document missing licenses in the source tree. Bad, paultag. Thanks
+    alteholz.
 
  -- Paul Tagliamonte <paultag@debian.org>  Tue, 07 Jan 2014 21:06:10 -0500

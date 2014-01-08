@@ -18,7 +18,7 @@ Files: hack/infrastructure/docker-ci/buildbot/github.py
 Copyright: Buildbot Team Members
 License: GPL-2
 
-Files: contrib/init/openrcdocker.initd
+Files: contrib/init/openrc/docker.initd
 Copyright: 1999-2013 Gentoo Foundation
 License: GPL-2
 

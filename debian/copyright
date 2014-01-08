@@ -15,6 +15,7 @@ Copyright: 2013-2014 Daniel Mizyrycki <daniel@docker.com>
 License: Apache-2.0
 
 Files: hack/infrastructure/docker-ci/buildbot/github.py
+Copyright: Buildbot Team Members
 License: GPL-2
 
 Files: contrib/init/openrcdocker.initd

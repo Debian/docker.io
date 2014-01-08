@@ -3,7 +3,7 @@ Section: admin
 Priority: optional
 Maintainer: Paul Tagliamonte <paultag@debian.org>
 Uploaders: Daniel Mizyrycki <daniel@docker.com>,
- Tianon Gravi <admwiggin@gmail.com>
+           Tianon Gravi <admwiggin@gmail.com>
 Build-Depends: bash-completion,
                debhelper (>=9),
                dh-golang (>= 1.1),
@@ -21,7 +21,10 @@ Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/docker.io.git;a=su
 
 Package: docker.io
 Architecture: linux-any
-Depends: lxc, ${misc:Depends}, ${shlibs:Depends}, adduser
+Depends: adduser,
+         lxc,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Built-Using: ${misc:Built-Using}
 Description: Linux container runtime
  Docker complements LXC with a high-level API which operates at the process

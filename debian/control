@@ -1,8 +1,9 @@
 Source: docker.io
 Section: admin
 Priority: optional
-Maintainer: Daniel Mizyrycki <daniel@dotcloud.com>
-Uploaders: Paul Tagliamonte <paultag@debian.org>
+Maintainer: Paul Tagliamonte <paultag@debian.org>
+Uploaders: Daniel Mizyrycki <daniel@dotcloud.com>,
+ Tianon Gravi <admwiggin@gmail.com>
 Build-Depends: bash-completion,
                debhelper (>=9),
                dh-golang (>= 1.1),
@@ -13,7 +14,7 @@ Build-Depends: bash-completion,
                golang-gosqlite-dev,
                golang-mux-dev,
                golang-pty-dev
-Standards-Version: 3.9.4
+Standards-Version: 3.9.5
 Homepage: http://github.com/dotcloud/docker
 Vcs-Git: git://anonscm.debian.org/collab-maint/docker.io.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/docker.io.git;a=summary

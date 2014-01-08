@@ -1,0 +1,13 @@
+diff --git a/contrib/init/sysvinit/docker b/contrib/init/sysvinit/docker
+index 2d79c4d..92f8f86 100755
+--- a/contrib/init/sysvinit/docker
++++ b/contrib/init/sysvinit/docker
+@@ -1,7 +1,7 @@
+ #!/bin/sh
+ 
+ ### BEGIN INIT INFO
+-# Provides:           docker
++# Provides:           docker.io
+ # Required-Start:     $syslog $remote_fs
+ # Required-Stop:      $syslog $remote_fs
+ # Default-Start:      2 3 4 5

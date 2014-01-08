@@ -1,10 +1,10 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: docker
-Upstream-Contact: dotCloud Inc <opensource@dotcloud.com>
-Source: http://github.com/dotcloud/docker
+Upstream-Name: Docker
+Upstream-Contact: Docker, Inc. <opensource@dotcloud.com>
+Source: https://github.com/dotcloud/docker
 
 Files: *
-Copyright: 2012, dotCloud Inc <opensource@dotcloud.com>
+Copyright: 2012-2014, Docker, Inc. <opensource@dotcloud.com>
 License: Apache-2.0
 
 Files: debian/*

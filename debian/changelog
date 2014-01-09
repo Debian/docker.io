@@ -1,3 +1,9 @@
+docker.io (0.6.7+dfsg1-3) UNRELEASED; urgency=medium
+
+  * Fixed FTBFS on non-amd64 platforms by setting the correct GOPATH.
+
+ -- Tianon Gravi <admwiggin@gmail.com>  Thu, 09 Jan 2014 15:26:38 +0000
+
 docker.io (0.6.7+dfsg1-2) unstable; urgency=medium
 
   * Added iptables dependency required for Docker to start.

@@ -1,4 +1,4 @@
-docker.io (0.6.7+dfsg1-1.1) unstable; urgency=medium
+docker.io (0.6.7+dfsg1-2) unstable; urgency=medium
 
   * Added iptables dependency required for Docker to start.
   * Added ca-certificates recommend required for pulling from the index.

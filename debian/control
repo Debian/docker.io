@@ -22,6 +22,7 @@ Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/docker.io.git;a=su
 Package: docker.io
 Architecture: linux-any
 Depends: adduser,
+         aufs-tools,
          iptables,
          lxc,
          ${misc:Depends},

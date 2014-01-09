@@ -32,6 +32,11 @@ override_dh_auto_install:
 	rm -rf debian/docker.io/usr/share/gocode
 
 
+# the SHA1 of dockerinit is important: don't strip it
+# also, Go has lots of problems with stripping, so just don't
+override_dh_strip:
+
+
 override_dh_auto_test:
 
 

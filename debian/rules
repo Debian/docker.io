@@ -6,19 +6,20 @@ export DH_GOPKG := github.com/dotcloud/docker
 # Tell dh-golang that we DO need subpackages
 export DH_GOLANG_INSTALL_ALL := 1
 
-# Set temporary build paths
-GO_PATH = $(CURDIR)/obj-$(DEB_BUILD_GNU_TYPE)
-DOCKER_VERSION = $(shell cat VERSION)
+# temporary build path (see http://golang.org/doc/code.html#GOPATH)
+export GOPATH := $(CURDIR)/obj-$(DEB_BUILD_GNU_TYPE)
 
 # TODO figure out a better place to store this exact hash (in the changelog somehow?)
-GITCOMMIT = 0d078b65
+export DOCKER_GITCOMMIT := 0d078b65
 
+# a few helpful variables for deduplication
 INITDIR = /usr/lib/docker.io
 INITPATH = ${INITDIR}/dockerinit
+DOCKER_VERSION = $(shell cat VERSION)
 
 
 override_dh_auto_build:
-	GOPATH=${GO_PATH} DOCKER_GITCOMMIT=${GITCOMMIT} DOCKER_INITPATH=${INITPATH} ./hack/make.sh dynbinary
+	DOCKER_INITPATH=${INITPATH} ./hack/make.sh dynbinary
 
 
 override_dh_auto_install:
@@ -35,6 +36,7 @@ override_dh_auto_test:
 
 
 override_dh_installman:
+	# we have to manually install because of the period in the name
 	mkdir -p debian/docker.io/usr/share/man/man1
 	cp debian/docker.io.1 debian/docker.io/usr/share/man/man1/
 

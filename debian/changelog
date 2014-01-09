@@ -1,9 +1,9 @@
-docker.io (0.6.7+dfsg1-1.1) UNRELEASED; urgency=medium
+docker.io (0.6.7+dfsg1-1.1) unstable; urgency=medium
 
   * Added iptables dependency required for Docker to start.
   * Added ca-certificates recommend required for pulling from the index.
 
- -- Tianon Gravi <admwiggin@gmail.com>  Thu, 09 Jan 2014 00:09:48 +0000
+ -- Tianon Gravi <admwiggin@gmail.com>  Wed, 08 Jan 2014 19:14:02 -0500
 
 docker.io (0.6.7+dfsg1-1) unstable; urgency=medium
 

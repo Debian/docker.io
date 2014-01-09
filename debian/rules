@@ -8,7 +8,6 @@ export DH_GOLANG_INSTALL_ALL := 1
 
 # Set temporary build paths
 GO_PATH = $(CURDIR)/obj-`arch`-linux-gnu
-DOCKER_PATH = obj-`arch`-linux-gnu/src/github.com/dotcloud/docker/docker
 DOCKER_VERSION = $(shell cat VERSION)
 
 # TODO figure out a better place to store this exact hash (in the changelog somehow?)

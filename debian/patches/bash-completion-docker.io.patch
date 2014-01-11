@@ -1,7 +1,72 @@
-diff --git a/contrib/completion/bash/docker b/contrib/completion/bash/docker
-index 8e53528..51c1e5e 100755
+Description: Rename binary file from docker to docker.io
+Author: Prach Pongpanich <prachpub@gmail.com>
+Forwarded: not-needed
+
 --- a/contrib/completion/bash/docker
 +++ b/contrib/completion/bash/docker
+@@ -24,35 +24,35 @@
+ __docker_containers_all()
+ {
+ 	local containers
+-	containers="$( docker ps -a -q )"
++	containers="$( docker.io ps -a -q )"
+ 	COMPREPLY=( $( compgen -W "$containers" -- "$cur" ) )
+ }
+ 
+ __docker_containers_running()
+ {
+ 	local containers
+-	containers="$( docker ps -q )"
++	containers="$( docker.io ps -q )"
+ 	COMPREPLY=( $( compgen -W "$containers" -- "$cur" ) )
+ }
+ 
+ __docker_containers_stopped()
+ {
+ 	local containers
+-	containers="$( comm -13 <(docker ps -q | sort -u) <(docker ps -a -q | sort -u) )"
++	containers="$( comm -13 <(docker.io ps -q | sort -u) <(docker.io ps -a -q | sort -u) )"
+ 	COMPREPLY=( $( compgen -W "$containers" -- "$cur" ) )
+ }
+ 
+ __docker_image_repos()
+ {
+ 	local repos
+-	repos="$( docker images | awk 'NR>1{print $1}' )"
++	repos="$( docker.io images | awk 'NR>1{print $1}' )"
+ 	COMPREPLY=( $( compgen -W "$repos" -- "$cur" ) )
+ }
+ 
+ __docker_images()
+ {
+ 	local images
+-	images="$( docker images | awk 'NR>1{print $1":"$2}' )"
++	images="$( docker.io images | awk 'NR>1{print $1":"$2}' )"
+ 	COMPREPLY=( $( compgen -W "$images" -- "$cur" ) )
+ 	__ltrim_colon_completions "$cur"
+ }
+@@ -60,8 +60,8 @@ __docker_images()
+ __docker_image_repos_and_tags()
+ {
+ 	local repos images
+-	repos="$( docker images | awk 'NR>1{print $1}' )"
+-	images="$( docker images | awk 'NR>1{print $1":"$2}' )"
++	repos="$( docker.io images | awk 'NR>1{print $1}' )"
++	images="$( docker.io images | awk 'NR>1{print $1":"$2}' )"
+ 	COMPREPLY=( $( compgen -W "$repos $images" -- "$cur" ) )
+ 	__ltrim_colon_completions "$cur"
+ }
+@@ -69,8 +69,8 @@ __docker_image_repos_and_tags()
+ __docker_containers_and_images()
+ {
+ 	local containers images
+-	containers="$( docker ps -a -q )"
+-	images="$( docker images | awk 'NR>1{print $1":"$2}' )"
++	containers="$( docker.io ps -a -q )"
++	images="$( docker.io images | awk 'NR>1{print $1":"$2}' )"
+ 	COMPREPLY=( $( compgen -W "$images $containers" -- "$cur" ) )
+ 	__ltrim_colon_completions "$cur"
+ }
 @@ -540,4 +540,4 @@ _docker()
  	return 0
  }

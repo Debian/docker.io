@@ -10,7 +10,7 @@ export DH_GOLANG_INSTALL_ALL := 1
 export GOPATH := $(CURDIR)/obj-$(DEB_BUILD_GNU_TYPE)
 
 # TODO figure out a better place to store this exact hash (in the changelog somehow?)
-export DOCKER_GITCOMMIT := 0d078b65
+export DOCKER_GITCOMMIT := 88df052
 
 # a few helpful variables for deduplication
 INITDIR = /usr/lib/docker.io

@@ -1,11 +1,9 @@
 # docker.io-architectures.patch
-remove-old-dep.patch
 
-# a few backported patches for features we need
-backport-0.7-DOCKER_GITCOMMIT-efd0e13c.patch
-backport-0.7.3-DOCKER_INITPATH-2ed1001c.patch
+# backported patches for features we need
+backport-0.7.3-DOCKER_INITPATH-pr-3064-adapted-for-0.7.1.patch
 
-# a few binary name patches (docker -> docker.io)
+# binary name patches (docker -> docker.io)
 bash-completion-docker.io.patch
 systemd-docker.io.patch
 sysvinit-provides-docker.io.patch

@@ -13,7 +13,8 @@ Build-Depends: bash-completion,
                golang-go.net-dev,
                golang-gosqlite-dev,
                golang-mux-dev,
-               golang-pty-dev
+               golang-pty-dev,
+               libdevmapper-dev
 Standards-Version: 3.9.5
 Homepage: https://github.com/dotcloud/docker
 Vcs-Git: git://anonscm.debian.org/docker/docker.io.git
@@ -21,13 +22,8 @@ Vcs-Browser: http://anonscm.debian.org/gitweb/?p=docker/docker.io.git;a=summary
 
 Package: docker.io
 Architecture: linux-any
-Depends: adduser,
-         aufs-tools,
-         iptables,
-         lxc,
-         ${misc:Depends},
-         ${shlibs:Depends}
-Recommends: ca-certificates
+Depends: adduser, iptables, lxc, ${misc:Depends}, ${shlibs:Depends}
+Recommends: aufs-tools, ca-certificates
 Built-Using: ${misc:Built-Using}
 Description: Linux container runtime
  Docker complements LXC with a high-level API which operates at the process

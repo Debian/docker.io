@@ -1,0 +1,170 @@
+Description: Backport upstream PR 3064 for DOCKER_INITPATH support
+Author: Tianon Gravi <admwiggin@gmail.com>
+Forwarded: not-needed
+
+--- a/api_params.go
++++ b/api_params.go
+@@ -44,6 +44,9 @@ type (
+ 		NEventsListener    int         `json:",omitempty"`
+ 		KernelVersion      string      `json:",omitempty"`
+ 		IndexServerAddress string      `json:",omitempty"`
++
++		InitSha1 string `json:",omitempty"`
++		InitPath string `json:",omitempty"`
+ 	}
+ 
+ 	APITop struct {
+diff --git a/commands.go b/commands.go
+index b7e7c08..e63c72a 100644
+--- a/commands.go
++++ b/commands.go
+@@ -455,6 +455,13 @@ func (cli *DockerCli) CmdInfo(args ...string) error {
+ 		fmt.Fprintf(cli.out, "LXC Version: %s\n", out.LXCVersion)
+ 		fmt.Fprintf(cli.out, "EventsListeners: %d\n", out.NEventsListener)
+ 		fmt.Fprintf(cli.out, "Kernel Version: %s\n", out.KernelVersion)
++
++		if out.InitSha1 != "" {
++			fmt.Fprintf(cli.out, "Init SHA1: %s\n", out.InitSha1)
++		}
++		if out.InitPath != "" {
++			fmt.Fprintf(cli.out, "Init Path: %s\n", out.InitPath)
++		}
+ 	}
+ 
+ 	if len(out.IndexServerAddress) != 0 {
+diff --git a/hack/make/dynbinary b/hack/make/dynbinary
+index 96ce482..5b52314 100644
+--- a/hack/make/dynbinary
++++ b/hack/make/dynbinary
+@@ -11,5 +11,5 @@ ln -sf dockerinit-$VERSION $DEST/dockerinit
+ export DOCKER_INITSHA1="$(sha1sum $DEST/dockerinit-$VERSION | cut -d' ' -f1)"
+ # exported so that "dyntest" can easily access it later without recalculating it
+ 
+-go build -o $DEST/docker-$VERSION -ldflags "$LDFLAGS -X github.com/dotcloud/docker/utils.INITSHA1 \"$DOCKER_INITSHA1\"" $BUILDFLAGS ./docker
++go build -o $DEST/docker-$VERSION -ldflags "$LDFLAGS -X github.com/dotcloud/docker/utils.INITSHA1 \"$DOCKER_INITSHA1\" -X github.com/dotcloud/docker/utils.INITPATH \"$DOCKER_INITPATH\"" $BUILDFLAGS ./docker
+ echo "Created binary: $DEST/docker-$VERSION"
+diff --git a/runtime.go b/runtime.go
+index fbf0fac..f3d45dd 100644
+--- a/runtime.go
++++ b/runtime.go
+@@ -723,18 +723,18 @@ func NewRuntimeFromDirectory(config *DaemonConfig) (*Runtime, error) {
+ 		return nil, fmt.Errorf("Could not locate dockerinit: This usually means docker was built incorrectly. See http://docs.docker.io/en/latest/contributing/devenvironment for official build instructions.")
+ 	}
+ 
+-	if !utils.IAMSTATIC {
+-		if err := os.Mkdir(path.Join(config.Root, fmt.Sprintf("init")), 0700); err != nil && !os.IsExist(err) {
++	if sysInitPath != localCopy {
++		// When we find a suitable dockerinit binary (even if it's our local binary), we copy it into config.Root at localCopy for future use (so that the original can go away without that being a problem, for example during a package upgrade).
++		if err := os.Mkdir(path.Dir(localCopy), 0700); err != nil && !os.IsExist(err) {
+ 			return nil, err
+ 		}
+-
+ 		if _, err := utils.CopyFile(sysInitPath, localCopy); err != nil {
+ 			return nil, err
+ 		}
+-		sysInitPath = localCopy
+-		if err := os.Chmod(sysInitPath, 0700); err != nil {
++		if err := os.Chmod(localCopy, 0700); err != nil {
+ 			return nil, err
+ 		}
++		sysInitPath = localCopy
+ 	}
+ 
+ 	runtime := &Runtime{
+diff --git a/server.go b/server.go
+index 49b25f7..153ba7c 100644
+--- a/server.go
++++ b/server.go
+@@ -604,6 +604,13 @@ func (srv *Server) DockerInfo() *APIInfo {
+ 		kernelVersion = kv.String()
+ 	}
+ 
++	// if we still have the original dockerinit binary from before we copied it locally, let's return the path to that, since that's more intuitive (the copied path is trivial to derive by hand given VERSION)
++	initPath := utils.DockerInitPath("")
++	if initPath == "" {
++		// if that fails, we'll just return the path from the runtime
++		initPath = srv.runtime.sysInitPath
++	}
++
+ 	return &APIInfo{
+ 		Containers:         len(srv.runtime.List()),
+ 		Images:             imgcount,
+@@ -619,6 +626,9 @@ func (srv *Server) DockerInfo() *APIInfo {
+ 		NEventsListener:    len(srv.events),
+ 		KernelVersion:      kernelVersion,
+ 		IndexServerAddress: auth.IndexServerAddress(),
++
++		InitSha1: utils.INITSHA1,
++		InitPath: initPath,
+ 	}
+ }
+ 
+diff --git a/utils/utils.go b/utils/utils.go
+index 6864ddd..f6e6542 100644
+--- a/utils/utils.go
++++ b/utils/utils.go
+@@ -26,6 +26,7 @@ import (
+ var (
+ 	IAMSTATIC bool   // whether or not Docker itself was compiled statically via ./hack/make.sh binary
+ 	INITSHA1  string // sha1sum of separate static dockerinit, if Docker itself was compiled dynamically via ./hack/make.sh dynbinary
++	INITPATH  string // custom location to search for a valid dockerinit binary (available for packagers as a last resort escape hatch)
+ )
+ 
+ // A common interface to access the Fatal method of
+@@ -162,14 +163,23 @@ func Trunc(s string, maxlen int) string {
+ 	return s[:maxlen]
+ }
+ 
+-// Figure out the absolute path of our own binary
++// Figure out the absolute path of our own binary (if it's still around).
+ func SelfPath() string {
+ 	path, err := exec.LookPath(os.Args[0])
+ 	if err != nil {
++		if os.IsNotExist(err) {
++			return ""
++		}
++		if execErr, ok := err.(*exec.Error); ok && os.IsNotExist(execErr.Err) {
++			return ""
++		}
+ 		panic(err)
+ 	}
+ 	path, err = filepath.Abs(path)
+ 	if err != nil {
++		if os.IsNotExist(err) {
++			return ""
++		}
+ 		panic(err)
+ 	}
+ 	return path
+@@ -190,7 +200,13 @@ func dockerInitSha1(target string) string {
+ }
+ 
+ func isValidDockerInitPath(target string, selfPath string) bool { // target and selfPath should be absolute (InitPath and SelfPath already do this)
++	if target == "" {
++		return false
++	}
+ 	if IAMSTATIC {
++		if selfPath == "" {
++			return false
++		}
+ 		if target == selfPath {
+ 			return true
+ 		}
+@@ -216,6 +232,7 @@ func DockerInitPath(localCopy string) string {
+ 	}
+ 	var possibleInits = []string{
+ 		localCopy,
++		INITPATH,
+ 		filepath.Join(filepath.Dir(selfPath), "dockerinit"),
+ 
+ 		// FHS 3.0 Draft: "/usr/libexec includes internal binaries that are not intended to be executed directly by users or shell scripts. Applications may use a single subdirectory under /usr/libexec."
+@@ -229,6 +246,9 @@ func DockerInitPath(localCopy string) string {
+ 		"/usr/local/lib/docker/dockerinit",
+ 	}
+ 	for _, dockerInit := range possibleInits {
++		if dockerInit == "" {
++			continue
++		}
+ 		path, err := exec.LookPath(dockerInit)
+ 		if err == nil {
+ 			path, err = filepath.Abs(path)

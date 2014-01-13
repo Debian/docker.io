@@ -1,5 +1,7 @@
-diff --git a/hack/make/dynbinary b/hack/make/dynbinary
-index e630c94..dda515d 100644
+Description: Backport upstream commit 2ed1001c for DOCKER_INITPATH support
+Author: Tianon Gravi <admwiggin@gmail.com>
+Forwarded: not-needed
+
 --- a/hack/make/dynbinary
 +++ b/hack/make/dynbinary
 @@ -11,5 +11,5 @@ ln -sf dockerinit-$VERSION $DEST/dockerinit

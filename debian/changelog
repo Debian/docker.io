@@ -1,8 +1,8 @@
-docker.io (0.7.1+dfsg1-1) UNRELEASED; urgency=medium
+docker.io (0.6.7+dfsg1-4.1) UNRELEASED; urgency=medium
 
-  * Updated with newer upstream release.
+  * Fixed "docker: command not found" errors while using bash tab completion.
 
- -- Tianon Gravi <admwiggin@gmail.com>  Sun, 12 Jan 2014 21:03:10 -0700
+ -- Prach Pongpanich <prachpub@gmail.com>  Mon, 13 Jan 2014 05:42:38 +0000
 
 docker.io (0.6.7+dfsg1-3) unstable; urgency=medium
 

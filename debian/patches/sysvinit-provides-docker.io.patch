@@ -1,5 +1,7 @@
-diff --git a/contrib/init/sysvinit/docker b/contrib/init/sysvinit/docker
-index 2d79c4d..92f8f86 100755
+Description: Sysvinit needs to "Provides" docker.io, not docker
+Author: Tianon Gravi <admwiggin@gmail.com>
+Forwarded: not-needed
+
 --- a/contrib/init/sysvinit/docker
 +++ b/contrib/init/sysvinit/docker
 @@ -1,7 +1,7 @@

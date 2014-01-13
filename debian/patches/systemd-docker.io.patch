@@ -1,5 +1,7 @@
-diff --git a/contrib/init/systemd/docker.service b/contrib/init/systemd/docker.service
-index bdc6522..4b72084 100644
+Description: Rename binary file from docker to docker.io
+Author: Tianon Gravi <admwiggin@gmail.com>
+Forwarded: not-needed
+
 --- a/contrib/init/systemd/docker.service
 +++ b/contrib/init/systemd/docker.service
 @@ -7,7 +7,7 @@ After=multi-user.target

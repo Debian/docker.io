@@ -1,3 +1,9 @@
+docker.io (0.6.7+dfsg1-4) UNRELEASED; urgency=medium
+
+  * Fixed "docker: command not found" errors while using bash tab completion.
+
+ -- Tianon Gravi <admwiggin@gmail.com>  Mon, 13 Jan 2014 05:27:13 +0000
+
 docker.io (0.6.7+dfsg1-3) unstable; urgency=medium
 
   * Fixed FTBFS on non-amd64 platforms by setting the correct GOPATH.

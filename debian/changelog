@@ -4,7 +4,8 @@ docker.io (0.7.1+dfsg1-1) UNRELEASED; urgency=medium
   * Fixed "docker: command not found" errors while using bash tab completion.
 
   [ Tianon Gravi ]
-  * Updated to 0.7.1 upstream release (while we wait for gocapability to be packaged).
+  * Updated to 0.7.1 upstream release (while we wait for gocapability to be
+    packaged).
 
  -- Tianon Gravi <admwiggin@gmail.com>  Mon, 13 Jan 2014 05:47:59 +0000
 

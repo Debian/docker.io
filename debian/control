@@ -21,12 +21,7 @@ Vcs-Browser: http://anonscm.debian.org/gitweb/?p=docker/docker.io.git;a=summary
 
 Package: docker.io
 Architecture: linux-any
-Depends: adduser,
-         aufs-tools,
-         iptables,
-         lxc,
-         ${misc:Depends},
-         ${shlibs:Depends}
+Depends: adduser, aufs-tools, iptables, lxc, ${misc:Depends}, ${shlibs:Depends}
 Recommends: ca-certificates
 Built-Using: ${misc:Built-Using}
 Description: Linux container runtime

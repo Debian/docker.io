@@ -6,6 +6,8 @@ docker.io (0.7.1+dfsg1-1) UNRELEASED; urgency=medium
   [ Tianon Gravi ]
   * Updated to 0.7.1 upstream release (while we wait for gocapability to be
     packaged).
+  * Added xz-utils recommend which is required for decompressing certain images
+    from the index.
 
  -- Tianon Gravi <admwiggin@gmail.com>  Mon, 13 Jan 2014 05:47:59 +0000
 

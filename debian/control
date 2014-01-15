@@ -33,4 +33,4 @@ Description: Docker Application Container Engine
  large-scale web deployments, database clusters, continuous deployment systems,
  private PaaS, service-oriented architectures, etc.
  .
- This package contains the daemon and client.
+ This package contains the daemon (currently amd64 only) and client.

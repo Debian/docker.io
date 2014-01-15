@@ -12,6 +12,8 @@ Copyright: 2013-2014 Daniel Mizyrycki <daniel@docker.com>
            2013-2014 Paul Tagliamonte <paultag@debian.org>
            2012-2014 Michael Stapelberg <stapelberg@debian.org>
            2013-2014 Tianon Gravi <admwiggin@gmail.com>
+           2013-2014 Johan Euphrosine <proppy@google.com>
+           2014 Prach Pongpanich <prachpub@gmail.com>
 License: Apache-2.0
 
 Files: hack/infrastructure/docker-ci/buildbot/github.py

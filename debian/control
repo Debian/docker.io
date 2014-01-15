@@ -25,7 +25,7 @@ Architecture: linux-any
 Depends: adduser, iptables, lxc, ${misc:Depends}, ${shlibs:Depends}
 Recommends: aufs-tools, ca-certificates, xz-utils
 Built-Using: ${misc:Built-Using}
-Description: Linux container runtime
+Description: Docker Application Container Engine
  Docker complements LXC with a high-level API which operates at the process
  level. It runs unix processes with strong guarantees of isolation and
  repeatability across servers.

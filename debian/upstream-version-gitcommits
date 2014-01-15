@@ -1,0 +1,11 @@
+# To determine the proper value for this, download
+# https://get.docker.io/builds/Linux/x86_64/docker-VERSION, chmod +x, and then
+# run ./docker-VERSION -v, which will list the exact build hash needed.
+
+0.6.7: cb48ecc
+0.7.0: 0d078b6
+0.7.1: 88df052
+0.7.2: 28b162e
+0.7.3: 8502ad4
+0.7.4: 010d74e
+0.7.5: c348c04

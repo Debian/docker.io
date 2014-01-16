@@ -25,7 +25,7 @@ Architecture: linux-any
 Depends: adduser, iptables, lxc, ${misc:Depends}, ${shlibs:Depends}
 Recommends: aufs-tools, ca-certificates, xz-utils
 Built-Using: ${misc:Built-Using}
-Description: Docker Application Container Engine
+Description: Linux container runtime
  Docker complements LXC with a high-level API which operates at the process
  level. It runs unix processes with strong guarantees of isolation and
  repeatability across servers.
@@ -33,4 +33,6 @@ Description: Docker Application Container Engine
  large-scale web deployments, database clusters, continuous deployment systems,
  private PaaS, service-oriented architectures, etc.
  .
- This package contains the daemon (currently amd64 only) and client.
+ This package contains the daemon and client. Using docker.io on non-amd64
+ hosts is not supported at this time. Please be careful when using it on
+ anything besides amd64.

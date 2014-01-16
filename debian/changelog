@@ -1,4 +1,4 @@
-docker.io (0.7.1+dfsg1-1) UNRELEASED; urgency=medium
+docker.io (0.7.1+dfsg1-1) unstable; urgency=medium
 
   [ Prach Pongpanich ]
   * Fixed "docker: command not found" errors while using bash tab completion
@@ -10,7 +10,7 @@ docker.io (0.7.1+dfsg1-1) UNRELEASED; urgency=medium
   * Added xz-utils recommend which is required for decompressing certain images
     from the index.
 
- -- Tianon Gravi <admwiggin@gmail.com>  Mon, 13 Jan 2014 05:47:59 +0000
+ -- Tianon Gravi <admwiggin@gmail.com>  Wed, 15 Jan 2014 20:22:34 -0500
 
 docker.io (0.6.7+dfsg1-3) unstable; urgency=medium
 

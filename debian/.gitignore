@@ -3,5 +3,6 @@ docker.io.substvars
 docker.io/
 files
 docker.io.postinst.debhelper
+docker.io.preinst.debhelper
 docker.io.postrm.debhelper
 docker.io.prerm.debhelper

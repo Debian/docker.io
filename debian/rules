@@ -50,5 +50,10 @@ override_dh_installchangelogs:
 	dh_installchangelogs CHANGELOG.md
 
 
+override_dh_installudev:
+	# use priority z80 to match the upstream priority of 80
+	dh_installudev --priority=z80
+
+
 %:
 	dh $@ --buildsystem=golang --with=golang,systemd,bash-completion

@@ -1,3 +1,10 @@
+docker.io (0.7.1+dfsg1-2) UNRELEASED; urgency=medium
+
+  * Added contrib/mk* scripts from upstream into /usr/share/docker.io/contrib
+    (Closes: #736068).
+
+ -- Tianon Gravi <admwiggin@gmail.com>  Sun, 19 Jan 2014 20:42:13 +0000
+
 docker.io (0.7.1+dfsg1-1) unstable; urgency=medium
 
   [ Prach Pongpanich ]

@@ -3,7 +3,8 @@ Section: admin
 Priority: optional
 Maintainer: Paul Tagliamonte <paultag@debian.org>
 Uploaders: Daniel Mizyrycki <daniel@docker.com>,
-           Tianon Gravi <admwiggin@gmail.com>
+           Tianon Gravi <admwiggin@gmail.com>,
+           Johan Euphrosine <proppy@google.com>
 Build-Depends: bash-completion,
                debhelper (>=9),
                dh-golang (>= 1.1),
@@ -14,6 +15,7 @@ Build-Depends: bash-completion,
                golang-gosqlite-dev,
                golang-mux-dev,
                golang-pty-dev,
+               golang-gocapability-dev,
                libdevmapper-dev
 Standards-Version: 3.9.5
 Homepage: https://github.com/dotcloud/docker

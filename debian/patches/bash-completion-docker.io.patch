@@ -75,3 +75,9 @@ Forwarded: not-needed
  	COMPREPLY=( $( compgen -W "$images $names $containers" -- "$cur" ) )
  	__ltrim_colon_completions "$cur"
  }
+@@ -544,4 +544,4 @@
+ 	return 0
+ }
+ 
+-complete -F _docker docker
++complete -F _docker docker.io

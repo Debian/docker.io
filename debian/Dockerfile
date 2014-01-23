@@ -24,6 +24,7 @@ RUN origtargz --unpack
 # tianon is _really_ lazy, and likes a preseeded bash history
 RUN { \
 	echo "DEBFULLNAME='' DEBEMAIL='' dch -i"; \
+	echo 'lintian --ftp-master-rejects'; \
 	echo 'uscan --force-download --verbose --download-current-version'; \
 	echo 'origtargz --unpack && debuild -us -uc --lintian-opts "-EvIL+pedantic"'; \
 } >> /.bash_history

@@ -1,4 +1,4 @@
-docker.io (0.7.6+dfsg1-1) UNRELEASED; urgency=medium
+docker.io (0.7.6+dfsg1-1) unstable; urgency=medium
 
   [ Johan Euphrosine ]
   * Updated to 0.7.6.
@@ -11,7 +11,7 @@ docker.io (0.7.6+dfsg1-1) UNRELEASED; urgency=medium
   * Added upstream udev rules file to stop device-mapper devices and mounts from
     appearing in desktop environments through udisks.
 
- -- Johan Euphrosine <proppy@google.com>  Tue, 21 Jan 2014 13:59:39 -0800
+ -- Johan Euphrosine <proppy@google.com>  Wed, 22 Jan 2014 22:50:47 -0500
 
 docker.io (0.7.1+dfsg1-1) unstable; urgency=medium
 

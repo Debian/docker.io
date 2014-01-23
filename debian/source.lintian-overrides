@@ -1,0 +1,6 @@
+docker.io source: source-contains-unsafe-symlink utils/testdata/fs/g
+docker.io source: source-contains-unsafe-symlink utils/testdata/fs/a/d
+# Hilariously, these are used to test unsafe symlinks.
+#                      much testing
+#                                        wow
+#     very unsafe

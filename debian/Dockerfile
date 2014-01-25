@@ -2,7 +2,7 @@ FROM debian:sid
 MAINTAINER Tianon Gravi <admwiggin@gmail.com>
 
 # build deps
-RUN apt-get update && apt-get install -yq devscripts equivs libcrypt-ssleay-perl lintian python3-debian --no-install-recommends
+RUN apt-get update && apt-get install -yq devscripts equivs libcrypt-ssleay-perl libwww-perl lintian python3-debian --no-install-recommends
 
 # need an editor for "dch -i"
 RUN apt-get update && apt-get install -yq vim-nox --no-install-recommends

@@ -2,3 +2,4 @@
 bash-completion-docker.io.patch
 systemd-docker.io.patch
 sysvinit-provides-docker.io.patch
+zsh-completion-docker.io.patch

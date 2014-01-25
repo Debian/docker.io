@@ -1,0 +1,76 @@
+Description: Rename binary file from docker to docker.io
+Author: Prach Pongpanich <prachpub@gmail.com>
+Forwarded: not-needed
+
+--- a/contrib/completion/zsh/_docker
++++ b/contrib/completion/zsh/_docker
+@@ -1,4 +1,4 @@
+-#compdef docker 
++#compdef docker.io
+ #
+ # zsh completion for docker (http://docker.io)
+ #
+@@ -15,7 +15,7 @@ __parse_docker_list() {
+ __docker_stoppedcontainers() {
+     local expl
+     declare -a stoppedcontainers 
+-    stoppedcontainers=(${(f)"$(docker ps -a | grep --color=never 'Exit' |  __parse_docker_list )"})
++    stoppedcontainers=(${(f)"$(docker.io ps -a | grep --color=never 'Exit' |  __parse_docker_list )"})
+     _describe -t containers-stopped "Stopped Containers" stoppedcontainers 
+ }
+ 
+@@ -23,7 +23,7 @@ __docker_runningcontainers() {
+     local expl
+     declare -a containers 
+ 
+-    containers=(${(f)"$(docker ps | __parse_docker_list)"})
++    containers=(${(f)"$(docker.io ps | __parse_docker_list)"})
+     _describe -t containers-active "Running Containers" containers 
+ }
+ 
+@@ -35,15 +35,15 @@ __docker_containers () {
+ __docker_images () {
+     local expl
+     declare -a images
+-    images=(${(f)"$(docker images | awk '(NR > 1){printf("%s\\:%s\n", $1,$2)}')"})
+-    images=($images ${(f)"$(docker images | awk '(NR > 1){printf("%s:%-15s in %s\n", $3,$2,$1)}')"})
++    images=(${(f)"$(docker.io images | awk '(NR > 1){printf("%s\\:%s\n", $1,$2)}')"})
++    images=($images ${(f)"$(docker.io images | awk '(NR > 1){printf("%s:%-15s in %s\n", $3,$2,$1)}')"})
+     _describe -t docker-images "Images" images
+ }
+ 
+ __docker_tags() {
+     local expl
+     declare -a tags
+-    tags=(${(f)"$(docker images | awk '(NR>1){print $2}'| sort | uniq)"})
++    tags=(${(f)"$(docker.io images | awk '(NR>1){print $2}'| sort | uniq)"})
+     _describe -t docker-tags "tags" tags
+ }
+ 
+@@ -64,7 +64,7 @@ __docker_search() {
+     if ( [[ ${(P)+cachename} -eq 0 ]] || _cache_invalid ${cachename#_} ) \
+         && ! _retrieve_cache ${cachename#_}; then
+         _message "Searching for ${searchterm}..."
+-        result=(${(f)"$(docker search ${searchterm} | awk '(NR>2){print $1}')"})
++        result=(${(f)"$(docker.io search ${searchterm} | awk '(NR>2){print $1}')"})
+         _store_cache ${cachename#_} result
+     fi 
+     _wanted dockersearch expl 'Available images' compadd -a result 
+@@ -81,7 +81,7 @@ __docker_caching_policy()
+ __docker_repositories () {
+     local expl
+     declare -a repos
+-    repos=(${(f)"$(docker images | sed -e '1d' -e 's/[ ].*//' | sort | uniq)"})
++    repos=(${(f)"$(docker.io images | sed -e '1d' -e 's/[ ].*//' | sort | uniq)"})
+     _describe -t docker-repos "Repositories" repos
+ }
+ 
+@@ -98,7 +98,7 @@ __docker_commands () {
+         && ! _retrieve_cache docker_subcommands; 
+     then
+         _docker_subcommands=(${${(f)"$(_call_program commands 
+-        docker 2>&1 | sed -e '1,6d' -e '/^[ ]*$/d' -e 's/[ ]*\([^ ]\+\)\s*\([^ ].*\)/\1:\2/' )"}})
++        docker.io 2>&1 | sed -e '1,6d' -e '/^[ ]*$/d' -e 's/[ ]*\([^ ]\+\)\s*\([^ ].*\)/\1:\2/' )"}})
+         _docker_subcommands=($_docker_subcommands 'help:Show help for a command') 
+         _store_cache docker_subcommands _docker_subcommands
+     fi

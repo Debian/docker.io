@@ -30,6 +30,10 @@ override_dh_auto_install:
 	mv bundles/${DOCKER_VERSION}/dynbinary/dockerinit-${DOCKER_VERSION} debian/docker.io/${INITPATH}
 	# The source of docker does not make a library, so dont ship it.
 	rm -rf debian/docker.io/usr/share/gocode
+	# Manual install zsh completion file  because of the dh_install does not support rename file
+	mkdir -p debian/docker.io/usr/share/zsh/vendor-completions
+	install -D -m 644 contrib/completion/zsh/_docker debian/docker.io/usr/share/zsh/vendor-completions/_docker.io
+
 
 
 # the SHA1 of dockerinit is important: don't strip it

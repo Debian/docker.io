@@ -18,7 +18,7 @@ export DOCKER_GITCOMMIT := $(shell awk '/^$(DOCKER_VERSION):/ { print $$2 }' deb
 
 
 override_dh_auto_build:
-	bash -c '{ [ "$$DOCKER_GITCOMMIT" ]; } || { echo; echo "error: missing DOCKER_GITCOMMIT - see debian/upstream-version-gitcommits"; echo; exit 2; } >&2'
+	@bash -c '{ [ "$$DOCKER_GITCOMMIT" ]; } || { echo; echo "error: missing DOCKER_GITCOMMIT - see debian/upstream-version-gitcommits"; echo; exit 2; } >&2'
 	DOCKER_INITPATH=${INITPATH} ./hack/make.sh dynbinary
 
 

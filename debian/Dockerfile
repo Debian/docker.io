@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -yq vim-nox --no-install-recommends
 RUN echo 'deb-src http://http.debian.net/debian sid main' >> /etc/apt/sources.list
 
 # start by adding just "debian/control" so we can get mk-build-deps with maximum caching
-ADD control /usr/src/docker.io/debian/control
+ADD control /usr/src/docker.io/debian/
 WORKDIR /usr/src/docker.io
 
 # get all the build deps of _this_ package in a nice repeatable way

@@ -1,0 +1,6 @@
+addon: dockerfile
+description: "Addon to highlight Docker's Dockerfiles"
+files:
+  - doc/dockerfile.txt
+  - ftdetect/dockerfile.vim
+  - syntax/dockerfile.vim

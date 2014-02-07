@@ -1,12 +1,13 @@
-docker.io (0.8.0+dfsg1-1) UNRELEASED; urgency=medium
+docker.io (0.8.0+dfsg1-2) UNRELEASED; urgency=medium
 
   [ Prach Pongpanich ]
   * Added zsh completion.
 
   [ Tianon Gravi ]
   * Updated to 0.8.0 upstream release.
+  * Added vim syntax files in new vim-syntax-docker package.
 
- -- Tianon Gravi <admwiggin@gmail.com>  Tue, 04 Feb 2014 00:09:17 +0000
+ -- Tianon Gravi <admwiggin@gmail.com>  Fri, 07 Feb 2014 23:52:16 +0000
 
 docker.io (0.7.6+dfsg1-1) unstable; urgency=medium
 

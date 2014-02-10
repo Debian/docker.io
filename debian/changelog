@@ -7,6 +7,7 @@ docker.io (0.8.0+dfsg1-1) UNRELEASED; urgency=medium
   * Updated to 0.8.0 upstream release.
   * Added vim syntax files in new vim-syntax-docker package.
   * Added note about minimum recommended kernel version to Description.
+  * Added contrib/*-integration files in /usr/share/docker.io/contrib.
 
  -- Tianon Gravi <admwiggin@gmail.com>  Fri, 07 Feb 2014 23:52:16 +0000
 

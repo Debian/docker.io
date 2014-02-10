@@ -47,7 +47,7 @@ Description: Linux container runtime
 
 Package: vim-syntax-docker
 Architecture: all
-Depends: ${misc:Depends}, vim
+Depends: vim, ${misc:Depends}
 Recommends: vim-addon-manager
 Suggests: docker.io
 Description: Docker container engine - Vim highlighting syntax files

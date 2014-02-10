@@ -44,6 +44,10 @@ Description: Linux container runtime
  This package contains the daemon and client. Using docker.io on non-amd64
  hosts is not supported at this time. Please be careful when using it on
  anything besides amd64.
+ .
+ Also, note that kernel version 3.8 or above is required for proper operation of
+ the daemon process, and that any lower versions may have subtle and/or glaring
+ issues.
 
 Package: vim-syntax-docker
 Architecture: all

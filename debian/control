@@ -31,7 +31,7 @@ Depends: adduser,
          ${misc:Depends},
          ${perl:Depends},
          ${shlibs:Depends}
-Recommends: aufs-tools, ca-certificates, linux (>= 3.8~), xz-utils
+Recommends: aufs-tools, ca-certificates, xz-utils
 Built-Using: ${misc:Built-Using}
 Description: Linux container runtime
  Docker complements LXC with a high-level API which operates at the process

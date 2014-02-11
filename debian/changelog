@@ -1,4 +1,4 @@
-docker.io (0.8.0+dfsg1-1) UNRELEASED; urgency=medium
+docker.io (0.8.0+dfsg1-1) unstable; urgency=medium
 
   [ Prach Pongpanich ]
   * Added zsh completion.
@@ -9,7 +9,7 @@ docker.io (0.8.0+dfsg1-1) UNRELEASED; urgency=medium
   * Added note about minimum recommended kernel version to Description.
   * Added contrib/*-integration files in /usr/share/docker.io/contrib.
 
- -- Tianon Gravi <admwiggin@gmail.com>  Fri, 07 Feb 2014 23:52:16 +0000
+ -- Tianon Gravi <admwiggin@gmail.com>  Mon, 10 Feb 2014 20:41:10 -0500
 
 docker.io (0.7.6+dfsg1-1) unstable; urgency=medium
 

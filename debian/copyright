@@ -28,6 +28,16 @@ Files: contrib/vim-syntax/*
 Copyright: 2013 Honza Pokorny
 License: BSD-2-clause
 
+Files: pkg/mflag/*
+Copyright: 2014 The Docker & Go Authors
+License: BSD-3-clause
+ TODO add BSD-3-clause text
+
+Files: contrib/completion/zsh/*
+Copyright: 2013-2014 Felix Riedel
+License: BSD-?
+ (see https://github.com/felixr/docker-zsh-completion/issues/12)
+
 License: Apache-2.0
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.

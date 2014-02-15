@@ -1,9 +1,9 @@
-docker.io (0.8.0+dfsg1-2) UNRELEASED; urgency=medium
+docker.io (0.8.0+dfsg1-2) unstable; urgency=medium
 
   [ Tianon Gravi ]
   * Added more license notes to debian/copyright (Closes: #738627).
 
- -- Tianon Gravi <admwiggin@gmail.com>  Thu, 13 Feb 2014 12:26:38 -0700
+ -- Tianon Gravi <admwiggin@gmail.com>  Sat, 15 Feb 2014 17:51:58 -0500
 
 docker.io (0.8.0+dfsg1-1) unstable; urgency=medium
 

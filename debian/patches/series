@@ -3,3 +3,6 @@ bash-completion-docker.io.patch
 systemd-docker.io.patch
 sysvinit-provides-docker.io.patch
 zsh-completion-docker.io.patch
+
+# TODO include https://code.google.com/p/go/source/detail?r=a15f344a9efa in golang package and depend on that in debian/control
+upstream-patched-archive-tar.patch

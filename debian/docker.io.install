@@ -1,2 +1,2 @@
-contrib/mk* usr/share/docker.io/contrib/
 contrib/*-integration usr/share/docker.io/contrib/
+contrib/mk* usr/share/docker.io/contrib/

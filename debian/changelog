@@ -2,10 +2,6 @@ docker.io (0.8.1+dfsg1-1) UNRELEASED; urgency=medium
 
   [ Tianon Gravi ]
   * Updated to 0.8.1 upstream release.
-  * DO NOT UPLOAD THIS RELEASE UNTIL WE HAVE UPSTREAMED THE GOLANG XATTRS PATCH
-    AND HAVE UPDATED debian/control TO DEPEND ON IT APPROPRIATELY! (and, of
-    course, removed the TODO comment in debian/patches/series and this big ugly
-    note/warning/reminder)
 
  -- Tianon Gravi <admwiggin@gmail.com>  Tue, 18 Feb 2014 21:37:03 -0700
 

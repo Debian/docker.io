@@ -4,5 +4,5 @@ systemd-docker.io.patch
 sysvinit-provides-docker.io.patch
 zsh-completion-docker.io.patch
 
-# TODO include https://code.google.com/p/go/source/detail?r=a15f344a9efa in golang package and depend on that in debian/control
+# once golang-1.3 drops, up the dep in debian/control and remove this patch
 upstream-patched-archive-tar.patch

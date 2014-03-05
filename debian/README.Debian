@@ -1,29 +1,31 @@
 Docker on Debian
 ================
 
+Due to a binary name conflict, the Debian Docker binary is installed as "docker.io".  Please adjust your scripts and expectations accordingly.
+
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=740856#10
+
+
 To enable docker memory limitation, the kernel needs to be loaded with
 boot parameters: cgroup_enable=memory swapaccount=1.
+
 This is because enabling memory cgroup support has some run-time overhead,
 and kernel maintainers don't want to slow down systems unnecessarily.
+
 http://www.mail-archive.com/debian-bugs-dist@lists.debian.org/msg764104.html
 https://github.com/dotcloud/docker/issues/396
+
 To instruct the kernel to enable memory cgroup support, edit
 /etc/default/grub and extend GRUB_CMDLINE_LINUX_DEFAULT like:
-GRUB_CMDLINE_LINUX_DEFAULT="cgroup_enable=memory swapaccount=1", then
-run update-grub, and reboot.
-This debian package includes experimental support for architectures
-different from amd64.
+
+GRUB_CMDLINE_LINUX_DEFAULT="cgroup_enable=memory swapaccount=1"
+
+Then run update-grub, and reboot.
 
 
-To create the original tarball, please just run::
+As noted in the upstream documentation (https://docs.docker.io), Docker will
+allow non-root users in the "docker" group to access "docker.sock" and thus
+communicate with the daemon.  To add yourself to the "docker" group, use
+something like:
 
-  $ uscan --force-download --verbose --download-version 0.5.3
-
-Where 0.5.3 is the Version you want.
-
-If you're interested in what is removed; please see debian/prune.
-
-
-The full files for the documentation is in the source, if you want to rebuild
-the docs given upstream's documentaiton from the repo. This is intentional. Just
-grab the source tarball without repacking, and add the control paragraph.
+adduser YOURUSER docker

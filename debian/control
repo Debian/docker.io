@@ -31,12 +31,13 @@ Depends: adduser,
          ${misc:Depends},
          ${perl:Depends},
          ${shlibs:Depends}
-Recommends: aufs-tools, ca-certificates, xz-utils
+Recommends: aufs-tools, ca-certificates, git, xz-utils
 Built-Using: ${misc:Built-Using}
 Description: Linux container runtime
- Docker complements LXC with a high-level API which operates at the process
- level. It runs unix processes with strong guarantees of isolation and
- repeatability across servers.
+ Docker complements kernel namespacing with a high-level API which operates at
+ the process level. It runs unix processes with strong guarantees of isolation
+ and repeatability across servers.
+ .
  Docker is a great building block for automating distributed systems:
  large-scale web deployments, database clusters, continuous deployment systems,
  private PaaS, service-oriented architectures, etc.

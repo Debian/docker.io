@@ -1,3 +1,9 @@
+docker.io (0.8.1+dfsg1-2) UNRELEASED; urgency=medium
+
+  * Updated README.Debian to not be quite so outdated (Closes: #740850).
+
+ -- Tianon Gravi <admwiggin@gmail.com>  Wed, 05 Mar 2014 18:06:22 +0000
+
 docker.io (0.8.1+dfsg1-1) unstable; urgency=medium
 
   * Updated to 0.8.1 upstream release.

@@ -1,7 +1,8 @@
 Docker on Debian
 ================
 
-Due to a binary name conflict, the Debian Docker binary is installed as "docker.io".  Please adjust your scripts and expectations accordingly.
+Due to a binary name conflict, the Debian Docker binary is installed as
+"docker.io".  Please adjust your scripts and expectations accordingly.
 
 https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=740856#10
 

@@ -15,11 +15,12 @@ INITPATH = ${INITDIR}/dockerinit
 DOCKER_VERSION = $(shell cat VERSION)
 
 export DOCKER_GITCOMMIT := $(shell awk '/^$(DOCKER_VERSION):/ { print $$2 }' debian/upstream-version-gitcommits)
+export DOCKER_INITPATH := ${INITPATH}
 
 
 override_dh_auto_build:
 	@bash -c '{ [ "$$DOCKER_GITCOMMIT" ]; } || { echo; echo "error: missing DOCKER_GITCOMMIT - see debian/upstream-version-gitcommits"; echo; exit 2; } >&2'
-	DOCKER_INITPATH=${INITPATH} ./hack/make.sh dynbinary
+	./hack/make.sh dynbinary
 
 
 override_dh_auto_install:

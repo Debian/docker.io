@@ -17,6 +17,7 @@ Build-Depends: bash-completion,
                golang-gosqlite-dev,
                golang-mux-dev,
                golang-pty-dev,
+               libapparmor-dev,
                libdevmapper-dev
 Standards-Version: 3.9.5
 Homepage: https://github.com/dotcloud/docker

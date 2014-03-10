@@ -1,121 +1,150 @@
 Author: Tianon Gravi <admwiggin@gmail.com>
 Description: "archive/tar" patch for upstreamed xattrs patch
-Applied-Upstream: golang-1.3 (scheduled to be released 2014-06-01)
+Applied-Upstream: when golang-1.3 is broadly packaged (scheduled to be released 2014-06-01)
 
 diff --git a/archive/archive.go b/archive/archive.go
-index 16c0199..817d37e 100644
+index 5d6c020..7f318dc 100644
 --- a/archive/archive.go
 +++ b/archive/archive.go
-@@ -2,7 +2,7 @@ package archive
+@@ -1,6 +1,7 @@
+ package archive
  
  import (
- 	"bytes"
--	"code.google.com/p/go/src/pkg/archive/tar"
 +	"archive/tar"
+ 	"bytes"
  	"compress/bzip2"
  	"compress/gzip"
- 	"errors"
+@@ -8,7 +9,6 @@ import (
+ 	"fmt"
+ 	"github.com/dotcloud/docker/pkg/system"
+ 	"github.com/dotcloud/docker/utils"
+-	"github.com/dotcloud/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
+ 	"io"
+ 	"io/ioutil"
+ 	"os"
 diff --git a/archive/archive_test.go b/archive/archive_test.go
-index 8badd58..4f6f5df 100644
+index 4126601..164fc8f 100644
 --- a/archive/archive_test.go
 +++ b/archive/archive_test.go
-@@ -2,7 +2,7 @@ package archive
+@@ -1,9 +1,9 @@
+ package archive
  
  import (
- 	"bytes"
--	"code.google.com/p/go/src/pkg/archive/tar"
 +	"archive/tar"
+ 	"bytes"
  	"fmt"
+-	"github.com/dotcloud/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
  	"io"
  	"io/ioutil"
+ 	"os"
 diff --git a/archive/changes.go b/archive/changes.go
-index b46b13b..25406f5 100644
+index 723e4a7..120f33a 100644
 --- a/archive/changes.go
 +++ b/archive/changes.go
-@@ -1,7 +1,7 @@
+@@ -1,11 +1,11 @@
  package archive
  
  import (
--	"code.google.com/p/go/src/pkg/archive/tar"
 +	"archive/tar"
+ 	"bytes"
  	"fmt"
+ 	"github.com/dotcloud/docker/pkg/system"
  	"github.com/dotcloud/docker/utils"
+-	"github.com/dotcloud/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
  	"io"
+ 	"os"
+ 	"path/filepath"
 diff --git a/archive/diff.go b/archive/diff.go
-index 6a77839..7bf01f3 100644
+index e20e4b1..7bf01f3 100644
 --- a/archive/diff.go
 +++ b/archive/diff.go
-@@ -1,7 +1,7 @@
+@@ -1,8 +1,8 @@
  package archive
  
  import (
--	"code.google.com/p/go/src/pkg/archive/tar"
 +	"archive/tar"
  	"fmt"
+-	"github.com/dotcloud/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
  	"io"
  	"io/ioutil"
+ 	"os"
 diff --git a/archive/wrap.go b/archive/wrap.go
-index 981420b..0abe320 100644
+index 03ea508..dfb335c 100644
 --- a/archive/wrap.go
 +++ b/archive/wrap.go
-@@ -2,7 +2,7 @@ package archive
+@@ -1,8 +1,8 @@
+ package archive
  
  import (
- 	"bytes"
--	"code.google.com/p/go/src/pkg/archive/tar"
 +	"archive/tar"
+ 	"bytes"
+-	"github.com/dotcloud/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
  	"io/ioutil"
  )
  
 diff --git a/integration/api_test.go b/integration/api_test.go
-index 5779e6b..e8ef626 100644
+index cb92d89..ceb38c1 100644
 --- a/integration/api_test.go
 +++ b/integration/api_test.go
-@@ -3,7 +3,7 @@ package docker
+@@ -1,6 +1,7 @@
+ package docker
+ 
  import (
++	"archive/tar"
  	"bufio"
  	"bytes"
--	"code.google.com/p/go/src/pkg/archive/tar"
-+	"archive/tar"
  	"encoding/json"
- 	"fmt"
- 	"github.com/dotcloud/docker"
-diff --git a/integration/utils_test.go b/integration/utils_test.go
-index 947ace1..59297fa 100644
---- a/integration/utils_test.go
-+++ b/integration/utils_test.go
-@@ -2,7 +2,7 @@ package docker
- 
- import (
- 	"bytes"
--	"code.google.com/p/go/src/pkg/archive/tar"
-+	"archive/tar"
- 	"fmt"
+@@ -11,7 +12,6 @@ import (
+ 	"github.com/dotcloud/docker/engine"
+ 	"github.com/dotcloud/docker/runconfig"
+ 	"github.com/dotcloud/docker/utils"
+-	"github.com/dotcloud/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
  	"io"
  	"io/ioutil"
-diff --git a/utils/tarsum.go b/utils/tarsum.go
-index ddeecfb..be8b4db 100644
---- a/utils/tarsum.go
-+++ b/utils/tarsum.go
-@@ -2,7 +2,7 @@ package utils
+ 	"net"
+diff --git a/integration/utils_test.go b/integration/utils_test.go
+index 05d73df..80c02a3 100644
+--- a/integration/utils_test.go
++++ b/integration/utils_test.go
+@@ -1,9 +1,9 @@
+ package docker
  
  import (
- 	"bytes"
--	"code.google.com/p/go/src/pkg/archive/tar"
 +	"archive/tar"
+ 	"bytes"
+ 	"fmt"
+-	"github.com/dotcloud/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
+ 	"io"
+ 	"io/ioutil"
+ 	"net/http"
+diff --git a/utils/tarsum.go b/utils/tarsum.go
+index 67e94aa..786196b 100644
+--- a/utils/tarsum.go
++++ b/utils/tarsum.go
+@@ -1,11 +1,11 @@
+ package utils
+ 
+ import (
++	"archive/tar"
+ 	"bytes"
  	"compress/gzip"
  	"crypto/sha256"
  	"encoding/hex"
+-	"github.com/dotcloud/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
+ 	"hash"
+ 	"io"
+ 	"sort"
 diff --git a/utils_test.go b/utils_test.go
-index 6917007..415391c 100644
+index 31fa12b..4b8cfba 100644
 --- a/utils_test.go
 +++ b/utils_test.go
-@@ -2,7 +2,7 @@ package docker
+@@ -1,8 +1,8 @@
+ package docker
  
  import (
- 	"bytes"
--	"code.google.com/p/go/src/pkg/archive/tar"
 +	"archive/tar"
+ 	"bytes"
+-	"github.com/dotcloud/docker/vendor/src/code.google.com/p/go/src/pkg/archive/tar"
  	"io"
  )
  

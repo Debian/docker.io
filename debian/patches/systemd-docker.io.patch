@@ -3,7 +3,7 @@ Author: Tianon Gravi <admwiggin@gmail.com>
 Forwarded: not-needed
 
 diff --git a/contrib/init/systemd/docker.service b/contrib/init/systemd/docker.service
-index 387be2e..73ea169 100644
+index 1bc4d1f..505402f 100644
 --- a/contrib/init/systemd/docker.service
 +++ b/contrib/init/systemd/docker.service
 @@ -4,7 +4,7 @@ Documentation=http://docs.docker.io
@@ -13,5 +13,18 @@ index 387be2e..73ea169 100644
 -ExecStart=/usr/bin/docker -d
 +ExecStart=/usr/bin/docker.io -d
  Restart=on-failure
+ LimitNOFILE=1048576
+ LimitNPROC=1048576
+diff --git a/contrib/init/systemd/socket-activation/docker.service b/contrib/init/systemd/socket-activation/docker.service
+index a3382ab..b80c0cf 100644
+--- a/contrib/init/systemd/socket-activation/docker.service
++++ b/contrib/init/systemd/socket-activation/docker.service
+@@ -4,7 +4,7 @@ Documentation=http://docs.docker.io
+ After=network.target
  
- [Install]
+ [Service]
+-ExecStart=/usr/bin/docker -d -H fd://
++ExecStart=/usr/bin/docker.io -d -H fd://
+ Restart=on-failure
+ LimitNOFILE=1048576
+ LimitNPROC=1048576

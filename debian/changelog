@@ -1,6 +1,7 @@
-docker.io (0.8.1+dfsg1-2) UNRELEASED; urgency=medium
+docker.io (0.9.0+dfsg1-1) UNRELEASED; urgency=medium
 
   * Updated README.Debian to not be quite so outdated (Closes: #740850).
+  * Updated to 0.9.0 upstream release.
 
  -- Tianon Gravi <admwiggin@gmail.com>  Wed, 05 Mar 2014 18:06:22 +0000
 

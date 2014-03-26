@@ -25,7 +25,8 @@ cd "$tempdir"
 tar xf "$dir/$filename"
 cat "$dir"/debian/prune/* | while read file; do rm -rvf */$file; done
 
-dfsgfilename="$(echo $filename | sed -E 's/(\.orig\.)/+dfsg1\1/')"
+dfsgfilename="$(echo $filename | sed -E 's/(\.orig\.)/~dfsg1\1/')"
+#dfsgfilename="$(echo $filename | sed -E 's/(\.orig\.)/+dfsg1\1/')"
 tar -czf ${dir}/${dfsgfilename} *
 cd "$dir"
 rm -rf "$tempdir"

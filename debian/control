@@ -27,7 +27,11 @@ Vcs-Browser: http://anonscm.debian.org/gitweb/?p=docker/docker.io.git;a=summary
 Package: docker.io
 Architecture: linux-any
 Depends: adduser, iptables, ${misc:Depends}, ${perl:Depends}, ${shlibs:Depends}
-Recommends: aufs-tools, ca-certificates, cgroupfs-mount, git, xz-utils
+Recommends: aufs-tools,
+            ca-certificates,
+            cgroupfs-mount | cgroup-lite,
+            git,
+            xz-utils
 Built-Using: ${misc:Built-Using}
 Description: Linux container runtime
  Docker complements kernel namespacing with a high-level API which operates at

@@ -32,7 +32,7 @@ Recommends: aufs-tools,
             cgroupfs-mount | cgroup-lite,
             git,
             xz-utils
-Suggests: debootstrap
+Suggests: btrfs-tools, debootstrap
 Built-Using: ${misc:Built-Using}
 Description: Linux container runtime
  Docker complements kernel namespacing with a high-level API which operates at

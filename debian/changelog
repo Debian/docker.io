@@ -1,4 +1,4 @@
-docker.io (0.9.1~dfsg1-1) unstable; urgency=medium
+docker.io (0.9.1~dfsg1-1) UNRELEASED; urgency=medium
 
   * Added notes about "root-equivalence" to README.Debian (Closes: #742387).
   * Updated to 0.9.1 upstream release.

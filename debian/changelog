@@ -1,6 +1,6 @@
 docker.io (0.9.1~dfsg1-1) UNRELEASED; urgency=medium
 
-  * Updated to 0.9.1 upstream release (hotfix for several minor issues).
+  * Updated to 0.9.1 upstream release (Closes: #743424).
   * Added cgroupfs-mount dependency (Closes: #742641).
   * Added Suggests entries for optional features, chiefly lxc (Closes: #742081).
   * Added notes about "root-equivalence" to README.Debian (Closes: #742387).

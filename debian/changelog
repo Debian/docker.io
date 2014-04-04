@@ -1,11 +1,11 @@
-docker.io (0.9.1~dfsg1-1) UNRELEASED; urgency=medium
+docker.io (0.9.1~dfsg1-1) unstable; urgency=medium
 
   * Updated to 0.9.1 upstream release (Closes: #743424).
   * Added cgroupfs-mount dependency (Closes: #742641).
   * Added Suggests entries for optional features, chiefly lxc (Closes: #742081).
   * Added notes about "root-equivalence" to README.Debian (Closes: #742387).
 
- -- Tianon Gravi <admwiggin@gmail.com>  Tue, 25 Mar 2014 22:59:12 -0600
+ -- Tianon Gravi <admwiggin@gmail.com>  Thu, 03 Apr 2014 21:38:30 -0400
 
 docker.io (0.9.0+dfsg1-1) unstable; urgency=medium
 

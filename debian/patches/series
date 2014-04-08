@@ -1,3 +1,5 @@
+5049-trusty-apparmor-fix.patch
+
 # binary name patches (docker -> docker.io)
 bash-completion-docker.io.patch
 systemd-docker.io.patch

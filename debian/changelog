@@ -1,3 +1,10 @@
+docker.io (0.9.1~dfsg1-2) UNRELEASED; urgency=medium
+
+  * Added upstream apparmor patch to fix newer apparmor versions (such as the
+    version appearing in Ubuntu 14.04).
+
+ -- Tianon Gravi <admwiggin@gmail.com>  Tue, 08 Apr 2014 09:34:24 -0600
+
 docker.io (0.9.1~dfsg1-1) unstable; urgency=medium
 
   * Updated to 0.9.1 upstream release (Closes: #743424).

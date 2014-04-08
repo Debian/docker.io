@@ -1,0 +1,24 @@
+Description: Fix issues with newer apparmor
+Origin: upstream, https://github.com/dotcloud/docker/pull/5049
+Applied-Upstream: 0.10.0, https://github.com/dotcloud/docker/pull/5049
+
+diff --git a/pkg/libcontainer/apparmor/setup.go b/pkg/libcontainer/apparmor/setup.go
+index 4e1c951..4c66459 100644
+--- a/pkg/libcontainer/apparmor/setup.go
++++ b/pkg/libcontainer/apparmor/setup.go
+@@ -11,13 +11,10 @@ import (
+ const DefaultProfilePath = "/etc/apparmor.d/docker"
+ const DefaultProfile = `
+ # AppArmor profile from lxc for containers.
+-@{HOME}=@{HOMEDIRS}/*/ /root/
+-@{HOMEDIRS}=/home/
+-#@{HOMEDIRS}+=
+-@{multiarch}=*-linux-gnu*
+-@{PROC}=/proc/
+ 
++#include <tunables/global>
+ profile docker-default flags=(attach_disconnected,mediate_deleted) {
++  #include <abstractions/base>
+   network,
+   capability,
+   file,

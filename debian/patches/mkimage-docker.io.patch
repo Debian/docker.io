@@ -1,0 +1,118 @@
+Description: Rename binary file from docker to docker.io
+Author: Tianon Gravi <admwiggin@gmail.com>
+Forwarded: not-needed
+
+diff --git a/contrib/mkimage-arch.sh b/contrib/mkimage-arch.sh
+index 73a4173..fe9f4cc 100755
+--- a/contrib/mkimage-arch.sh
++++ b/contrib/mkimage-arch.sh
+@@ -58,6 +58,6 @@ mknod -m 666 $DEV/full c 1 7
+ mknod -m 600 $DEV/initctl p
+ mknod -m 666 $DEV/ptmx c 5 2
+ 
+-tar --numeric-owner -C $ROOTFS -c . | docker import - archlinux
+-docker run -i -t archlinux echo Success.
++tar --numeric-owner -C $ROOTFS -c . | docker.io import - archlinux
++docker.io run -i -t archlinux echo Success.
+ rm -rf $ROOTFS
+diff --git a/contrib/mkimage-busybox.sh b/contrib/mkimage-busybox.sh
+index c1bb88c..2e993f1 100755
+--- a/contrib/mkimage-busybox.sh
++++ b/contrib/mkimage-busybox.sh
+@@ -35,5 +35,5 @@ do
+     cp -a /dev/$X dev
+ done
+ 
+-tar --numeric-owner -cf- . | docker import - busybox
+-docker run -i -u root busybox /bin/echo Success.
++tar --numeric-owner -cf- . | docker.io import - busybox
++docker.io run -i -u root busybox /bin/echo Success.
+diff --git a/contrib/mkimage-crux.sh b/contrib/mkimage-crux.sh
+index 074c334..891c725 100755
+--- a/contrib/mkimage-crux.sh
++++ b/contrib/mkimage-crux.sh
+@@ -64,9 +64,9 @@ mknod -m 666 $DEV/full c 1 7
+ mknod -m 600 $DEV/initctl p
+ mknod -m 666 $DEV/ptmx c 5 2
+ 
+-IMAGE_ID=$(tar --numeric-owner -C $ROOTFS -c . | docker import - crux:$VERSION)
+-docker tag $IMAGE_ID crux:latest
+-docker run -i -t crux echo Success.
++IMAGE_ID=$(tar --numeric-owner -C $ROOTFS -c . | docker.io import - crux:$VERSION)
++docker.io tag $IMAGE_ID crux:latest
++docker.io run -i -t crux echo Success.
+ 
+ # Cleanup
+ umount $CRUX
+diff --git a/contrib/mkimage-debootstrap.sh b/contrib/mkimage-debootstrap.sh
+index 33ba7b0..7d480d1 100755
+--- a/contrib/mkimage-debootstrap.sh
++++ b/contrib/mkimage-debootstrap.sh
+@@ -89,17 +89,17 @@ fi
+ 
+ # some rudimentary detection for whether we need to "sudo" our docker calls
+ docker=''
+-if docker version > /dev/null 2>&1; then
+-	docker='docker'
+-elif sudo docker version > /dev/null 2>&1; then
+-	docker='sudo docker'
+-elif command -v docker > /dev/null 2>&1; then
+-	docker='docker'
++if docker.io version > /dev/null 2>&1; then
++	docker='docker.io'
++elif sudo docker.io version > /dev/null 2>&1; then
++	docker='sudo docker.io'
++elif command -v docker.io > /dev/null 2>&1; then
++	docker='docker.io'
+ else
+ 	echo >&2 "warning: either docker isn't installed, or your current user cannot run it;"
+ 	echo >&2 "         this script is not likely to work as expected"
+ 	sleep 3
+-	docker='docker' # give us a command-not-found later
++	docker='docker.io' # give us a command-not-found later
+ fi
+ 
+ # make sure we have an absolute path to our final tarball so we can still reference it properly after we change directory
+diff --git a/contrib/mkimage-rinse.sh b/contrib/mkimage-rinse.sh
+index dfe9999..2d5bdf2 100755
+--- a/contrib/mkimage-rinse.sh
++++ b/contrib/mkimage-rinse.sh
+@@ -111,9 +111,9 @@ if [ -z "$version" ]; then
+ 	version="$distro"
+ fi
+ 
+-sudo tar --numeric-owner -c . | docker import - $repo:$version
++sudo tar --numeric-owner -c . | docker.io import - $repo:$version
+ 
+-docker run -i -t $repo:$version echo success
++docker.io run -i -t $repo:$version echo success
+ 
+ cd "$returnTo"
+ sudo rm -rf "$target"
+diff --git a/contrib/mkimage-unittest.sh b/contrib/mkimage-unittest.sh
+index a33f238..59f993f 100755
+--- a/contrib/mkimage-unittest.sh
++++ b/contrib/mkimage-unittest.sh
+@@ -44,6 +44,6 @@ do
+ done
+ 
+ chmod 0755 $ROOTFS # See #486
+-tar --numeric-owner -cf- . | docker import - docker-ut
+-docker run -i -u root docker-ut /bin/echo Success.
++tar --numeric-owner -cf- . | docker.io import - docker-ut
++docker.io run -i -u root docker-ut /bin/echo Success.
+ rm -rf $ROOTFS
+diff --git a/contrib/mkimage-yum.sh b/contrib/mkimage-yum.sh
+index f21a63a..43b04fc 100755
+--- a/contrib/mkimage-yum.sh
++++ b/contrib/mkimage-yum.sh
+@@ -92,7 +92,7 @@ if [ -z "$version" ]; then
+     version=$name
+ fi
+ 
+-tar --numeric-owner -c -C "$target" . | docker import - $name:$version
+-docker run -i -t $name:$version echo success
++tar --numeric-owner -c -C "$target" . | docker.io import - $name:$version
++docker.io run -i -t $name:$version echo success
+ 
+ rm -rf "$target"

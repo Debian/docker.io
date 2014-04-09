@@ -2,7 +2,6 @@
 # https://get.docker.io/builds/Linux/x86_64/docker-VERSION, chmod +x, and then
 # run ./docker-VERSION -v, which will list the exact build hash needed.
 
-0.10.0: dc9c28f
 0.5.3: 17c92b8
 0.6.0: f4a4f1c
 0.6.1: 5105263
@@ -23,3 +22,4 @@
 0.8.1: a1598d1
 0.9.0: 2b3fdf2
 0.9.1: 3600720
+0.10.0: dc9c28f

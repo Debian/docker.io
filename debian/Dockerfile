@@ -1,22 +1,4 @@
-FROM debian:sid
-MAINTAINER Tianon Gravi <admwiggin@gmail.com>
-
-# build deps
-RUN apt-get update && apt-get install -yq \
-	devscripts \
-	equivs \
-	libcrypt-ssleay-perl \
-	libfile-fcntllock-perl \
-	libwww-perl \
-	lintian \
-	python3-debian \
-	--no-install-recommends
-
-# need an editor for "dch -i"
-RUN apt-get update && apt-get install -yq vim-nox --no-install-recommends
-
-# need deb-src for compiling packages
-RUN echo 'deb-src http://http.debian.net/debian sid main' >> /etc/apt/sources.list
+FROM tianon/debian-devel
 
 # start by adding just "debian/control" so we can get mk-build-deps with maximum caching
 ADD control /usr/src/docker.io/debian/
@@ -33,11 +15,6 @@ RUN uscan --force-download --verbose --download-current-version
 RUN origtargz --unpack
 
 # tianon is _really_ lazy, and likes a preseeded bash history
-RUN { \
-	echo "DEBFULLNAME='' DEBEMAIL='' dch -i"; \
-	echo 'lintian --ftp-master-rejects'; \
-	echo 'uscan --force-download --verbose --download-current-version'; \
-	echo 'origtargz --unpack && debuild -us -uc --lintian-opts "-EvIL+pedantic"'; \
-} >> /.bash_history
+RUN echo 'origtargz --unpack && debuild -us -uc --lintian-opts "-EvIL+pedantic"' >> /root/.bash_history
 
 CMD [ "debuild", "-us", "-uc", "--lintian-opts", "-EvIL+pedantic" ]
